@@ -20,6 +20,7 @@ def plot_figure(means, stdevs, n_steps, dt, tstep=100, fbmod=None, savefig=True)
 
         color = 'tab:blue'
         ax2_1.set_ylabel('Bladder Pressure (P) [cm H2O]', color=color)  # we already handled the x-label with ax1
+        # ax2_1.set_ylim(bottom=5,top=40)
         ax2_1.plot(fbmod.times, fbmod.b_pres, color=color,lw=0.5)
         ax2_1.tick_params(axis='y', labelcolor=color)
 
