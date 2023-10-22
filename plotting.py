@@ -43,7 +43,7 @@ def plot_figure(means, stdevs, n_steps, dt, tstep=100, fbmod=None, savefig=True)
     plt.plot(t, means['PAGaff'][ind], color='y', label='PAG',lw=0.5)
     # plt.plot(t, means['FB'][ind], color='k', label='FB',lw=0.5)
     plt.plot(t, means['IMG'][ind], color='r', label='IMG',lw=0.5)
-    plt.plot(t, means['IND'][ind], color='b', label='IND',lw=0.5)
+    # plt.plot(t, means['IND'][ind], color='b', label='IND',lw=0.5)
 
     plt.xlabel('Time (t) [s]')
     plt.ylabel('Neuron Firing Rate (FR) [Hz]')
