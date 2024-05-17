@@ -28,6 +28,8 @@ def write_file(spikes_path, stims, pop_name):
 #     start     -- start times for simulation
 #     end     -- end times of simulation
 
+
+#Most likely can be depoed for BMTK poisson generator now
 def generate_poisson(filename,input_dir,cells,hz,start,end,pop_name):
     stims = {}   
     for i in np.arange(0,len(hz)):

@@ -60,5 +60,5 @@
 	"pag_neurons": {"pop_name": "PAGaff"}
 	
  },	
-  "network": "./circuit_config.json"
+  "network": "jsons/circuit_config.json"
 }

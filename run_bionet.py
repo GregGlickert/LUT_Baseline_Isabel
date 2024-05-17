@@ -14,7 +14,7 @@ from plotting import plot_figure, plotting_calculator
 # Import the synaptic depression/facilitation model
 import synapses
 
-import plot_results
+import plot_results_old
 
 
 """
@@ -48,10 +48,10 @@ def run(config_file):
     sim.run()
 
     #fbmod.save_aff(conf.output_dir)
-    plot_results.run(sim=sim,conf=conf)
+    #plot_results.run(sim=sim,conf=conf)
 
-if __name__ == '__main__':
-    if __file__ != sys.argv[-1]:
-        run(sys.argv[-1])
-    else:
-        run('config.json')
+# if __name__ == '__main__':
+    # if __file__ != sys.argv[-1]:
+        # run(sys.argv[-1])
+    # else:
+run(config_file='jsons/simulation_config.json')

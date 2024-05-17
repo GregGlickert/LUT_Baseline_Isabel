@@ -1,10 +1,24 @@
+# Build Network
+
 import numpy as np
 from bmtk.builder.networks import NetworkBuilder
 import math
 import random
+import model_parameters
 
 random.seed(42)
-output_dir='network'
+
+model = model_parameters.model_settings()
+output_dir = 'network'
+# an idea how this could be used
+#if model.case == 'baseline' or model.case =='sci':
+#    if model.case == 'baseline':
+#        output_dir='baseline_network'
+#    elif model.case == 'sci':
+#        output_dir='sci_network'
+#     else:
+        #print("model case choose incorrectly choose either baseline or sci")
+        #exit(-1)
 
 #######################################################################
 ##################### Create the cells ################################
@@ -15,20 +29,32 @@ print("\nCreating Cells")
 net = NetworkBuilder('LUT')
 
 # Specify number of cells in each population #
+import model_parameters
+model = model_parameters.model_settings()
 
-numBladaff  = 10
-numPAGaff   = 10
-numEUSaff   = 10
-numIND      = 10
-numHypo     = 10
-numINmplus  = 10
-numINmminus = 10
-numPGN      = 10
-numFB       = 10
-numIMG      = 10 
-numMPG      = 10
-numEUSmn    = 10
-numBladmn   = 10
+def get_cell_number(target_pop):
+        node_set = model.node_set
+        for node in node_set:
+            if node["name"] == target_pop:
+                start = node["start"]
+                end = node["end"]
+                num = np.arange(start=start,stop=end+1,step=1)
+                return(len(num))
+
+numBladaff  = get_cell_number('Bladaff')
+numPAGaff   = get_cell_number('PAGaff')
+numEUSaff   = get_cell_number('EUSaff')
+numIND      = get_cell_number('IND')
+numHypo     = get_cell_number('Hypo')
+numINmplus  = get_cell_number('INmplus')
+numINmminus = get_cell_number('INmminus')
+numPGN      = get_cell_number('PGN')
+numFB       = get_cell_number("FB")
+numIMG      = get_cell_number("IMG")
+numMPG      = get_cell_number("MPG")
+numEUSmn    = get_cell_number("EUSmn")
+numBladmn   = get_cell_number("Bladmn")
+
 # Create the nodes ----------------------------------------
 net.add_nodes(N=numBladaff, level='high',pop_name='Bladaff',model_type='biophysical',model_template='hoc:PUD',morphology='blank.swc')
 net.add_nodes(N=numPAGaff, pop_name='PAGaff',model_type='biophysical',model_template='hoc:PUD',morphology='blank.swc')
@@ -37,10 +63,10 @@ net.add_nodes(N=numIND, pop_name='IND',model_type='biophysical',model_template='
 net.add_nodes(N=numHypo, pop_name='Hypo',model_type='biophysical',model_template='hoc:HYPO',morphology='blank.swc')
 net.add_nodes(N=numINmplus, pop_name='INmplus',model_type='biophysical',model_template='hoc:INM',morphology='blank.swc')
 net.add_nodes(N=numINmminus, pop_name='INmminus',model_type='biophysical',model_template='hoc:INM',morphology='blank.swc')
-net.add_nodes(N=numPGN, level='low', pop_name='PGN',model_type='biophysical',model_template='hoc:PGN',morphology='blank.swc') 
+net.add_nodes(N=numPGN, level='low', pop_name='PGN',model_type='biophysical',model_template='hoc:PGN',morphology='blank.swc')
 net.add_nodes(N=numFB, pop_name='FB',model_type='biophysical',model_template='hoc:PUD',morphology='blank.swc')
 net.add_nodes(N=numIMG, pop_name='IMG',model_type='biophysical',model_template='hoc:IMG',morphology='blank.swc')
-net.add_nodes(N=numMPG, pop_name='MPG',model_type='biophysical',model_template='hoc:MPG',morphology='blank.swc') 
+net.add_nodes(N=numMPG, pop_name='MPG',model_type='biophysical',model_template='hoc:MPG',morphology='blank.swc')
 net.add_nodes(N=numEUSmn, pop_name='EUSmn',model_type='biophysical',model_template='hoc:PUD',morphology='blank.swc')
 net.add_nodes(N=numBladmn, pop_name='Bladmn',model_type='biophysical',model_template='hoc:PUD',morphology='blank.swc')
 
@@ -81,7 +107,7 @@ def one_to_one(source, target):
         sid = sid-(numBladaff+numEUSaff+numPAGaff+numIND+numHypo+numINmplus+numINmminus+numPGN+numFB+numIMG+numMPG)
     if source_name=='Bladmn':
         sid = sid-(numBladaff+numEUSaff+numPAGaff+numIND+numHypo+numINmplus+numINmminus+numPGN+numFB+numIMG+numMPG+numEUSmn)
-    
+
     if target_name=='EUSaff':
         tid = tid-(numBladaff)
     if target_name=='PAGaff':
@@ -106,7 +132,7 @@ def one_to_one(source, target):
         tid = tid-(numBladaff+numEUSaff+numPAGaff+numIND+numHypo+numINmplus+numINmminus+numPGN+numFB+numIMG+numMPG)
     if target_name=='Bladmn':
         tid = tid-(numBladaff+numEUSaff+numPAGaff+numIND+numHypo+numINmplus+numINmminus+numPGN+numFB+numIMG+numMPG+numEUSmn)
-    
+
     if sid == tid:
         print("connecting {} cell {} to {} cell {}".format(source_name,sid,target_name,tid))
         tmp_nsyn = 1
@@ -150,7 +176,7 @@ def percent_connector(source,target,percent):
         sid = sid-(numBladaff+numEUSaff+numPAGaff+numIND+numHypo+numINmplus+numINmminus+numPGN+numFB+numIMG+numMPG)
     if source_name=='Bladmn':
         sid = sid-(numBladaff+numEUSaff+numPAGaff+numIND+numHypo+numINmplus+numINmminus+numPGN+numFB+numIMG+numMPG+numEUSmn)
-    
+
     if target_name=='EUSaff':
         tid = tid-(numBladaff)
     if target_name=='PAGaff':
@@ -204,17 +230,17 @@ def conn_props(source,target,mu,sigma):
 # Blad afferent --> INd (Grill et al. 2016)
 conn = net.add_edges(source=net.nodes(pop_name='Bladaff'), target=net.nodes(pop_name='IND'),
                    connection_rule=percent_connector,
-                   connection_params={'percent':100.0}, 
+                   connection_params={'percent':100.0},
 				   target_sections=['somatic'],
                    delay=2.0,
                    distance_range=[0.0, 300.0],
                    dynamics_params='AMPA_ExcToExc.json',
                    model_template='Exp2Syn')
-				
+
 conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                     rule=conn_props,
                     rule_params={'mu':3.0e-3,'sigma':1},
-                    dtypes=[np.float, np.int32, np.float])
+                    dtypes=[np.float64, np.int32, np.float64])
 
  # Blad afferent --> Hypogastric (Hou et al. 2014)
 conn = net.add_edges(source=net.nodes(pop_name='Bladaff'), target=net.nodes(pop_name='Hypo'),
@@ -229,7 +255,7 @@ conn = net.add_edges(source=net.nodes(pop_name='Bladaff'), target=net.nodes(pop_
 conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                      rule=conn_props,
                      rule_params={'mu':10.0e-3,'sigma':1}, # was 10.0e-3
-                     dtypes=[np.float, np.int32, np.float])
+                     dtypes=[np.float64, np.int32, np.float64])
 
 # EUS afferent --> INd (Grill et al. 2016)
 conn = net.add_edges(source=net.nodes(pop_name='EUSaff'), target=net.nodes(pop_name='IND'),
@@ -244,7 +270,7 @@ conn = net.add_edges(source=net.nodes(pop_name='EUSaff'), target=net.nodes(pop_n
 conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                     rule=conn_props,
                     rule_params={'mu':1.0e-3,'sigma':1},
-                    dtypes=[np.float, np.int32, np.float])
+                    dtypes=[np.float64, np.int32, np.float64])
 
 # PAG afferent --> INd (Grill et al. 2016)
 conn = net.add_edges(source=net.nodes(pop_name='PAGaff'), target=net.nodes(pop_name='IND'),
@@ -259,7 +285,7 @@ conn = net.add_edges(source=net.nodes(pop_name='PAGaff'), target=net.nodes(pop_n
 conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                     rule=conn_props,
                     rule_params={'mu':5.0e-3,'sigma':1},  # was 20.0e-3
-                    dtypes=[np.float, np.int32, np.float])
+                    dtypes=[np.float64, np.int32, np.float64])
 
 # INd --> PGN (Grill et al. 2016)
 conn = net.add_edges(source=net.nodes(pop_name='IND'), target=net.nodes(pop_name='PGN'),
@@ -274,7 +300,7 @@ conn = net.add_edges(source=net.nodes(pop_name='IND'), target=net.nodes(pop_name
 conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                     rule=conn_props,
                     rule_params={'mu':16.0e-3,'sigma':1},
-                    dtypes=[np.float, np.int32, np.float])
+                    dtypes=[np.float64, np.int32, np.float64])
 
  # Hypogastric --> IMG (Beckel et al. 2015)
 conn = net.add_edges(source=net.nodes(pop_name='Hypo'), target=net.nodes(pop_name='IMG'),
@@ -289,7 +315,7 @@ conn = net.add_edges(source=net.nodes(pop_name='Hypo'), target=net.nodes(pop_nam
 conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                      rule=conn_props,
                      rule_params={'mu':12.0e-3,'sigma':1},
-                     dtypes=[np.float, np.int32, np.float])
+                     dtypes=[np.float64, np.int32, np.float64])
 
 ## STSP synapse ##
 # # EUS afferent --> INm+ (Grill et al. 2016) **Low pass filter**
@@ -299,13 +325,13 @@ conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                    # target_sections=['somatic'],
                    # delay=2.0,
                    # distance_range=[0.0, 300.0],
-                   # dynamics_params='stsp.json', 
+                   # dynamics_params='stsp.json',
                    # model_template='Exp2Syn1_STSP')
 
 # conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                     # rule=conn_props,
                     # rule_params={'mu':0.5,'sigma':1},
-                    # dtypes=[np.float, np.int32, np.float])
+                    # dtypes=[np.float64, np.int32, np.float64])
 
 # EUS afferent --> INm+(Grill et al. 2016)
 conn = net.add_edges(source=net.nodes(pop_name='EUSaff'), target=net.nodes(pop_name='INmplus'),
@@ -320,7 +346,7 @@ conn = net.add_edges(source=net.nodes(pop_name='EUSaff'), target=net.nodes(pop_n
 conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                     rule=conn_props,
                     rule_params={'mu':16.5e-3,'sigma':1},
-                    dtypes=[np.float, np.int32, np.float])
+                    dtypes=[np.float64, np.int32, np.float64])
 # PAG afferent --> INm+ (Source?)
 # Using this connection instead of synaptic depression for low pass filtering
 # conn = net.add_edges(source=net.nodes(pop_name='PAGaff'), target=net.nodes(pop_name='PGN'),
@@ -335,7 +361,7 @@ conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
 # conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                     # rule=conn_props,
                     # rule_params={'mu':11.0e-3,'sigma':1},
-                    # dtypes=[np.float, np.int32, np.float])
+                    # dtypes=[np.float64, np.int32, np.float64])
 
 # EUS afferent --> INm-(Grill et al. 2016)
 conn = net.add_edges(source=net.nodes(pop_name='EUSaff'), target=net.nodes(pop_name='INmminus'),
@@ -350,7 +376,7 @@ conn = net.add_edges(source=net.nodes(pop_name='EUSaff'), target=net.nodes(pop_n
 conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                     rule=conn_props,
                     rule_params={'mu':16.0e-3,'sigma':1},
-                    dtypes=[np.float, np.int32, np.float])
+                    dtypes=[np.float64, np.int32, np.float64])
 
 # INm+ --> PGN (Grill et al. 2016)
 conn = net.add_edges(source=net.nodes(pop_name='INmplus'), target=net.nodes(pop_name='PGN'),
@@ -365,7 +391,7 @@ conn = net.add_edges(source=net.nodes(pop_name='INmplus'), target=net.nodes(pop_
 conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                     rule=conn_props,
                     rule_params={'mu':1.0e-3,'sigma':1},
-                    dtypes=[np.float, np.int32, np.float])
+                    dtypes=[np.float64, np.int32, np.float64])
 
 # INm- --> PGN (Grill et al. 2016)
 conn = net.add_edges(source=net.nodes(pop_name='INmminus'), target=net.nodes(pop_name='PGN'),
@@ -380,7 +406,7 @@ conn = net.add_edges(source=net.nodes(pop_name='INmminus'), target=net.nodes(pop
 conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                     rule=conn_props,
                     rule_params={'mu':20.0e-3,'sigma':1},
-                    dtypes=[np.float, np.int32, np.float])
+                    dtypes=[np.float64, np.int32, np.float64])
 
 # PGN --> MPG (Beckel et al. 2015)
 conn = net.add_edges(source=net.nodes(pop_name='PGN'), target=net.nodes(pop_name='MPG'),
@@ -395,7 +421,7 @@ conn = net.add_edges(source=net.nodes(pop_name='PGN'), target=net.nodes(pop_name
 conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                     rule=conn_props,
                     rule_params={'mu':12.0e-3,'sigma':1},
-                    dtypes=[np.float, np.int32, np.float])
+                    dtypes=[np.float64, np.int32, np.float64])
 
 # PGN --> FB (Grill et al. 2016)
 conn = net.add_edges(source=net.nodes(pop_name='PGN'), target=net.nodes(pop_name='FB'),
@@ -410,7 +436,7 @@ conn = net.add_edges(source=net.nodes(pop_name='PGN'), target=net.nodes(pop_name
 conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                     rule=conn_props,
                     rule_params={'mu':12.0e-3,'sigma':1}, #was 12.0e-3
-                    dtypes=[np.float, np.int32, np.float])
+                    dtypes=[np.float64, np.int32, np.float64])
 
 # FB --> INd (Grill et al. 2016)
 conn = net.add_edges(source=net.nodes(pop_name='FB'), target=net.nodes(pop_name='IND'),
@@ -425,7 +451,7 @@ conn = net.add_edges(source=net.nodes(pop_name='FB'), target=net.nodes(pop_name=
 conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                     rule=conn_props,
                     rule_params={'mu':12.0e-3,'sigma':1},       # was 12.0e-3
-                    dtypes=[np.float, np.int32, np.float])
+                    dtypes=[np.float64, np.int32, np.float64])
 
 # # MPG --> Bladder MN (Beckel et al. 2015)
 # conn = net.add_edges(source=net.nodes(pop_name='MPG'), target=net.nodes(pop_name='Bladmn'),
@@ -440,7 +466,7 @@ conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
 # conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                     # rule=conn_props,
                     # rule_params={'mu':16.0e-3,'sigma':1},
-                    # dtypes=[np.float, np.int32, np.float])
+                    # dtypes=[np.float64, np.int32, np.float64])
 
 # # IMG --> Bladder MN (Beckel et al. 2015)
 # conn = net.add_edges(source=net.nodes(pop_name='IMG'), target=net.nodes(pop_name='Bladmn'),
@@ -455,7 +481,7 @@ conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
 # conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                     # rule=conn_props,
                     # rule_params={'mu':10.0e-3,'sigma':1},
-                    # dtypes=[np.float, np.int32, np.float])
+                    # dtypes=[np.float64, np.int32, np.float64])
 
 # PAG aff --> Hypogastric (de Groat, et al. 2015)
 conn = net.add_edges(source=net.nodes(pop_name='PAGaff'), target=net.nodes(pop_name='Hypo'),
@@ -470,7 +496,7 @@ conn = net.add_edges(source=net.nodes(pop_name='PAGaff'), target=net.nodes(pop_n
 conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                      rule=conn_props,
                      rule_params={'mu':12.0e-3,'sigma':1},
-                     dtypes=[np.float, np.int32, np.float])
+                     dtypes=[np.float64, np.int32, np.float64])
 
 # PAG aff --> EUS MN (Shefchyk et al. 2001)
 # conn = net.add_edges(source=net.nodes(pop_name='PAGaff'), target=net.nodes(pop_name='EUSmn'),
@@ -485,7 +511,7 @@ conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
 # conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                     # rule=conn_props,
                     # rule_params={'mu':12.0e-3,'sigma':1},
-                    # dtypes=[np.float, np.int32, np.float])
+                    # dtypes=[np.float64, np.int32, np.float64])
 
 # EUS afferent --> EUS MN (Beckel et al. 2015)
 # conn = net.add_edges(source=net.nodes(pop_name='EUSaff'), target=net.nodes(pop_name='EUSmn'),
@@ -500,7 +526,7 @@ conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
 # conn.add_properties(names=['syn_weight', 'sec_id', 'sec_x'],
                     # rule=conn_props,
                     # rule_params={'mu':12.0e-3,'sigma':1},
-                    # dtypes=[np.float, np.int32, np.float])
+                    # dtypes=[np.float64, np.int32, np.float64])
 
 # Connect virtual cells to EUS, Bladder, and PAG/PMC
 Blad_aff_virt = NetworkBuilder('Blad_aff_virt') # Virtual cells delivering input to Bladder
@@ -521,7 +547,7 @@ Blad_aff_virt.add_edges(source=Blad_aff_virt.nodes(), target=net.nodes(pop_name=
                    dynamics_params='AMPA_ExcToExc.json',
                    model_template='Exp2Syn')
 
-					
+
 EUS_aff_virt.add_edges(source=EUS_aff_virt.nodes(), target=net.nodes(pop_name='EUSaff'),
                    connection_rule=percent_connector,
                    connection_params={'percent':100.0},
