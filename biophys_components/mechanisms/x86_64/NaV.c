@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "scoplib_ansi.h"
+#include "mech_api.h"
 #undef PI
 #define nil 0
 #include "md1redef.h"
@@ -46,66 +46,127 @@ extern double hoc_Exp(double);
 #define t nrn_threads->_t
 #define dt nrn_threads->_dt
 #define gbar _p[0]
+#define gbar_columnindex 0
 #define g _p[1]
+#define g_columnindex 1
 #define C1 _p[2]
+#define C1_columnindex 2
 #define C2 _p[3]
+#define C2_columnindex 3
 #define C3 _p[4]
+#define C3_columnindex 4
 #define C4 _p[5]
+#define C4_columnindex 5
 #define C5 _p[6]
+#define C5_columnindex 6
 #define I1 _p[7]
+#define I1_columnindex 7
 #define I2 _p[8]
+#define I2_columnindex 8
 #define I3 _p[9]
+#define I3_columnindex 9
 #define I4 _p[10]
+#define I4_columnindex 10
 #define I5 _p[11]
+#define I5_columnindex 11
 #define O _p[12]
+#define O_columnindex 12
 #define I6 _p[13]
+#define I6_columnindex 13
 #define f01 _p[14]
+#define f01_columnindex 14
 #define f02 _p[15]
+#define f02_columnindex 15
 #define f03 _p[16]
+#define f03_columnindex 16
 #define f04 _p[17]
+#define f04_columnindex 17
 #define f0O _p[18]
+#define f0O_columnindex 18
 #define f11 _p[19]
+#define f11_columnindex 19
 #define f12 _p[20]
+#define f12_columnindex 20
 #define f13 _p[21]
+#define f13_columnindex 21
 #define f14 _p[22]
+#define f14_columnindex 22
 #define f1n _p[23]
+#define f1n_columnindex 23
 #define fi1 _p[24]
+#define fi1_columnindex 24
 #define fi2 _p[25]
+#define fi2_columnindex 25
 #define fi3 _p[26]
+#define fi3_columnindex 26
 #define fi4 _p[27]
+#define fi4_columnindex 27
 #define fi5 _p[28]
+#define fi5_columnindex 28
 #define fin _p[29]
+#define fin_columnindex 29
 #define b01 _p[30]
+#define b01_columnindex 30
 #define b02 _p[31]
+#define b02_columnindex 31
 #define b03 _p[32]
+#define b03_columnindex 32
 #define b04 _p[33]
+#define b04_columnindex 33
 #define b0O _p[34]
+#define b0O_columnindex 34
 #define b11 _p[35]
+#define b11_columnindex 35
 #define b12 _p[36]
+#define b12_columnindex 36
 #define b13 _p[37]
+#define b13_columnindex 37
 #define b14 _p[38]
+#define b14_columnindex 38
 #define b1n _p[39]
+#define b1n_columnindex 39
 #define bi1 _p[40]
+#define bi1_columnindex 40
 #define bi2 _p[41]
+#define bi2_columnindex 41
 #define bi3 _p[42]
+#define bi3_columnindex 42
 #define bi4 _p[43]
+#define bi4_columnindex 43
 #define bi5 _p[44]
+#define bi5_columnindex 44
 #define bin _p[45]
+#define bin_columnindex 45
 #define ena _p[46]
+#define ena_columnindex 46
 #define ina _p[47]
+#define ina_columnindex 47
 #define DC1 _p[48]
+#define DC1_columnindex 48
 #define DC2 _p[49]
+#define DC2_columnindex 49
 #define DC3 _p[50]
+#define DC3_columnindex 50
 #define DC4 _p[51]
+#define DC4_columnindex 51
 #define DC5 _p[52]
+#define DC5_columnindex 52
 #define DI1 _p[53]
+#define DI1_columnindex 53
 #define DI2 _p[54]
+#define DI2_columnindex 54
 #define DI3 _p[55]
+#define DI3_columnindex 55
 #define DI4 _p[56]
+#define DI4_columnindex 56
 #define DI5 _p[57]
+#define DI5_columnindex 57
 #define DO _p[58]
+#define DO_columnindex 58
 #define DI6 _p[59]
+#define DI6_columnindex 59
 #define _g _p[60]
+#define _g_columnindex 60
 #define _ion_ena	*_ppvar[0]._pval
 #define _ion_ina	*_ppvar[1]._pval
 #define _ion_dinadv	*_ppvar[2]._pval
@@ -238,15 +299,15 @@ extern void hoc_reg_nmodl_filename(int, const char*);
 };
  static double _sav_indep;
  static void nrn_alloc(Prop*);
-static void  nrn_init(_NrnThread*, _Memb_list*, int);
-static void nrn_state(_NrnThread*, _Memb_list*, int);
- static void nrn_cur(_NrnThread*, _Memb_list*, int);
-static void  nrn_jacob(_NrnThread*, _Memb_list*, int);
+static void  nrn_init(NrnThread*, _Memb_list*, int);
+static void nrn_state(NrnThread*, _Memb_list*, int);
+ static void nrn_cur(NrnThread*, _Memb_list*, int);
+static void  nrn_jacob(NrnThread*, _Memb_list*, int);
  
 static int _ode_count(int);
 static void _ode_map(int, double**, double**, double*, Datum*, double*, int);
-static void _ode_spec(_NrnThread*, _Memb_list*, int);
-static void _ode_matsol(_NrnThread*, _Memb_list*, int);
+static void _ode_spec(NrnThread*, _Memb_list*, int);
+static void _ode_matsol(NrnThread*, _Memb_list*, int);
  
 #define _cvode_ieq _ppvar[3]._i
  static void _ode_matsol_instance1(_threadargsproto_);
@@ -303,7 +364,7 @@ static void nrn_alloc(Prop* _prop) {
  static void _update_ion_pointer(Datum*);
  extern Symbol* hoc_lookup(const char*);
 extern void _nrn_thread_reg(int, int, void(*)(Datum*));
-extern void _nrn_thread_table_reg(int, void(*)(double*, Datum*, Datum*, _NrnThread*, int));
+extern void _nrn_thread_table_reg(int, void(*)(double*, Datum*, Datum*, NrnThread*, int));
 extern void hoc_register_tolerance(int, HocStateTolerance*, Symbol***);
 extern void _cvode_abstol( Symbol**, double*, int);
 
@@ -328,7 +389,7 @@ extern void _cvode_abstol( Symbol**, double*, int);
  	hoc_register_cvode(_mechtype, _ode_count, _ode_map, _ode_spec, _ode_matsol);
  	hoc_register_tolerance(_mechtype, _hoc_state_tol, &_atollist);
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 NaV /home/ifbdtk/LUT_SCI_Hunter/LUT_Baseline/biophys_components/mechanisms/modfiles/x86_64/NaV.mod\n");
+ 	ivoc_help("help ?1 NaV /Users/gregglickert/Documents/GitHub/LUT_Baseline_Isabel/biophys_components/mechanisms/modfiles/NaV.mod\n");
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
@@ -1015,7 +1076,7 @@ for(_i=0;_i<12;_i++){
  
 static int _ode_count(int _type){ return 12;}
  
-static void _ode_spec(_NrnThread* _nt, _Memb_list* _ml, int _type) {
+static void _ode_spec(NrnThread* _nt, _Memb_list* _ml, int _type) {
    Datum* _thread;
    Node* _nd; double _v; int _iml, _cntml;
   _cntml = _ml->_nodecount;
@@ -1041,7 +1102,7 @@ static void _ode_matsol_instance1(_threadargsproto_) {
  _cvode_sparse(&_cvsparseobj1, 12, _dlist1, _p, _ode_matsol1, &_coef1);
  }
  
-static void _ode_matsol(_NrnThread* _nt, _Memb_list* _ml, int _type) {
+static void _ode_matsol(NrnThread* _nt, _Memb_list* _ml, int _type) {
    Datum* _thread;
    Node* _nd; double _v; int _iml, _cntml;
   _cntml = _ml->_nodecount;
@@ -1088,7 +1149,7 @@ static void initmodel() {
 }
 }
 
-static void nrn_init(_NrnThread* _nt, _Memb_list* _ml, int _type){
+static void nrn_init(NrnThread* _nt, _Memb_list* _ml, int _type){
 Node *_nd; double _v; int* _ni; int _iml, _cntml;
 #if CACHEVEC
     _ni = _ml->_nodeindices;
@@ -1119,7 +1180,7 @@ static double _nrn_current(double _v){double _current=0.;v=_v;{ {
 } return _current;
 }
 
-static void nrn_cur(_NrnThread* _nt, _Memb_list* _ml, int _type){
+static void nrn_cur(NrnThread* _nt, _Memb_list* _ml, int _type){
 Node *_nd; int* _ni; double _rhs, _v; int _iml, _cntml;
 #if CACHEVEC
     _ni = _ml->_nodeindices;
@@ -1156,7 +1217,7 @@ for (_iml = 0; _iml < _cntml; ++_iml) {
  
 }}
 
-static void nrn_jacob(_NrnThread* _nt, _Memb_list* _ml, int _type){
+static void nrn_jacob(NrnThread* _nt, _Memb_list* _ml, int _type){
 Node *_nd; int* _ni; int _iml, _cntml;
 #if CACHEVEC
     _ni = _ml->_nodeindices;
@@ -1176,7 +1237,7 @@ for (_iml = 0; _iml < _cntml; ++_iml) {
  
 }}
 
-static void nrn_state(_NrnThread* _nt, _Memb_list* _ml, int _type){
+static void nrn_state(NrnThread* _nt, _Memb_list* _ml, int _type){
 Node *_nd; double _v = 0.0; int* _ni; int _iml, _cntml;
 double _dtsav = dt;
 if (secondorder) { dt *= 0.5; }
@@ -1215,36 +1276,36 @@ static void terminal(){}
 static void _initlists() {
  int _i; static int _first = 1;
   if (!_first) return;
- _slist2[0] = &(I1) - _p;
- _slist2[1] = &(C2) - _p;
- _slist2[2] = &(C1) - _p;
- _slist2[3] = &(I2) - _p;
- _slist2[4] = &(C3) - _p;
- _slist2[5] = &(I3) - _p;
- _slist2[6] = &(C4) - _p;
- _slist2[7] = &(I4) - _p;
- _slist2[8] = &(C5) - _p;
- _slist2[9] = &(I5) - _p;
- _slist2[10] = &(O) - _p;
- _slist2[11] = &(I6) - _p;
+ _slist2[0] = I1_columnindex;
+ _slist2[1] = C2_columnindex;
+ _slist2[2] = C1_columnindex;
+ _slist2[3] = I2_columnindex;
+ _slist2[4] = C3_columnindex;
+ _slist2[5] = I3_columnindex;
+ _slist2[6] = C4_columnindex;
+ _slist2[7] = I4_columnindex;
+ _slist2[8] = C5_columnindex;
+ _slist2[9] = I5_columnindex;
+ _slist2[10] = O_columnindex;
+ _slist2[11] = I6_columnindex;
  if (_first) _coef2 = makematrix(12, 13);
- _slist1[0] = &(I6) - _p;  _dlist1[0] = &(DI6) - _p;
- _slist1[1] = &(C5) - _p;  _dlist1[1] = &(DC5) - _p;
- _slist1[2] = &(C4) - _p;  _dlist1[2] = &(DC4) - _p;
- _slist1[3] = &(C3) - _p;  _dlist1[3] = &(DC3) - _p;
- _slist1[4] = &(C2) - _p;  _dlist1[4] = &(DC2) - _p;
- _slist1[5] = &(C1) - _p;  _dlist1[5] = &(DC1) - _p;
- _slist1[6] = &(I5) - _p;  _dlist1[6] = &(DI5) - _p;
- _slist1[7] = &(I4) - _p;  _dlist1[7] = &(DI4) - _p;
- _slist1[8] = &(I3) - _p;  _dlist1[8] = &(DI3) - _p;
- _slist1[9] = &(I2) - _p;  _dlist1[9] = &(DI2) - _p;
- _slist1[10] = &(I1) - _p;  _dlist1[10] = &(DI1) - _p;
- _slist1[11] = &(O) - _p;  _dlist1[11] = &(DO) - _p;
+ _slist1[0] = I6_columnindex;  _dlist1[0] = DI6_columnindex;
+ _slist1[1] = C5_columnindex;  _dlist1[1] = DC5_columnindex;
+ _slist1[2] = C4_columnindex;  _dlist1[2] = DC4_columnindex;
+ _slist1[3] = C3_columnindex;  _dlist1[3] = DC3_columnindex;
+ _slist1[4] = C2_columnindex;  _dlist1[4] = DC2_columnindex;
+ _slist1[5] = C1_columnindex;  _dlist1[5] = DC1_columnindex;
+ _slist1[6] = I5_columnindex;  _dlist1[6] = DI5_columnindex;
+ _slist1[7] = I4_columnindex;  _dlist1[7] = DI4_columnindex;
+ _slist1[8] = I3_columnindex;  _dlist1[8] = DI3_columnindex;
+ _slist1[9] = I2_columnindex;  _dlist1[9] = DI2_columnindex;
+ _slist1[10] = I1_columnindex;  _dlist1[10] = DI1_columnindex;
+ _slist1[11] = O_columnindex;  _dlist1[11] = DO_columnindex;
 _first = 0;
 }
 
 #if NMODL_TEXT
-static const char* nmodl_filename = "/home/ifbdtk/LUT_SCI_Hunter/LUT_Baseline/biophys_components/mechanisms/modfiles/NaV.mod";
+static const char* nmodl_filename = "/Users/gregglickert/Documents/GitHub/LUT_Baseline_Isabel/biophys_components/mechanisms/modfiles/NaV.mod";
 static const char* nmodl_file_text = 
   "TITLE Mouse sodium current\n"
   ": Kinetics of Carter et al. (2012)\n"

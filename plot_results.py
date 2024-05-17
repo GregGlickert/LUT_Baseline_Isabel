@@ -1,74 +1,36 @@
-import sys, os
-from bmtk.simulator import bionet
-from bmtk.utils.reports.spike_trains import SpikeTrains
-from feedback_loop import FeedbackLoop
-import numpy as np
+import matplotlib.pyplot as plt
 import pandas as pd
-from plotting import plot_figure, plotting_calculator
-from bmtk.analyzer.compartment import plot_traces
 
-num = {
-'Bladaff' : 10,
-'PAGaff'  : 10,
-'EUSaff'  : 10,
-'IND'     : 10,
-'Hypo'    : 10,
-'INmplus' : 10,
-'INmminus': 10,
-'PGN'     : 10,
-'FB'      : 10,
-'IMG'     : 10,
-'MPG'     : 10,
-'EUSmn'   : 10,
-'Bladmn'  : 10
-}
-gids = {}
-ind = 0
-for pop,n in num.items():
-    gids[pop] = ind
-    ind += n
+def plot_figure(bladder_volume,bladder_pressure,feedback_times,save_fig=None,show_fig=None):
+    #Plot bladder volume and bladder pressure
+    fig1, ax1_1 = plt.subplots(figsize = (10,6))
 
-def run(config_file=None,sim=None,conf=None):
-    if config_file is not None:
-        conf = bionet.Config.from_json(config_file, validate=True)
-        dt = conf['run']['dt']
-        n_steps = np.ceil(conf['run']['tstop']/dt+1).astype(np.int)
-        fbmod = None
-    if sim is not None:
-        n_steps = sim.n_steps
-        dt = sim.dt
-        fbmod = sim._sim_mods[[isinstance(mod,FeedbackLoop) for mod in sim._sim_mods].index(True)]
-    output_dir = conf.output_dir
-    print(n_steps,dt)
+    feedback_times = [tx/1000 for tx in feedback_times]
+    bladder_volume = [bx*1000 for bx in bladder_volume]
 
-    spikes_df = pd.read_csv(os.path.join(output_dir,'spikes.csv'), sep=' ')
-    print(spikes_df['node_ids'].unique())
-    spike_trains = SpikeTrains.from_sonata(os.path.join(output_dir,'spikes.h5'))
+    color = 'tab:red'
+    ax1_1.set_xlabel('Time (t) [s]')
+    ax1_1.set_ylabel('Bladder Volume (V) [ul]', color=color)
+    ax1_1.plot(feedback_times, bladder_volume, color=color,lw=0.5)
+    ax1_1.tick_params(axis='y', labelcolor=color)
 
-    #plotting
-    window_size = 1000
-    pops = ['Bladaff','PGN','PAGaff','EUSmn','INmminus','INmplus','IND', 'IMG', 'FB']
-    windows = [window_size]*len(pops)
-    means = {}
-    stdevs = {}
-    for pop,win in zip(pops,windows):
-        means[pop], stdevs[pop] = plotting_calculator(spike_trains, n_steps, dt, win, gids, num, pop)
-    
-    plot_figure(means, stdevs, n_steps, dt, tstep=window_size, fbmod=fbmod)
+    ax2_1 = ax1_1.twinx()  # instantiate a second axes that shares the same x-axis
 
+    color = 'tab:blue'
+    ax2_1.set_ylabel('Bladder Pressure (P) [cm H2O]', color=color)  # we already handled the x-label with ax1
+    # ax2_1.set_ylim(bottom=5,top=40)
+    ax2_1.plot(feedback_times, bladder_pressure, color=color,lw=0.5)
+    ax2_1.tick_params(axis='y', labelcolor=color)
 
-if __name__ == '__main__':
-    if __file__ != sys.argv[-1]:
-        run(config_file=sys.argv[-1])
-    else:
-        run(config_file='jsons/simulation_config.json')
+    fig1.tight_layout()  # otherwise the right y-label is slightly clipped
 
-    plot_traces(config_file = 'jsons/simulation_config.json', report_name = 'membrane_report', node_ids = [5], title = 'Bladder Afferent Membrane Voltage', show_legend = False)
-    plot_traces(config_file = 'jsons/simulation_config.json', report_name = 'membrane_report', node_ids = [15], title = 'PAG Membrane Voltage', show_legend = False)
-    plot_traces(config_file = 'jsons/simulation_config.json', report_name = 'membrane_report', node_ids = [25], title = 'EUS Membrane Voltage', show_legend = False)
-    plot_traces(config_file = 'jsons/simulation_config.json', report_name = 'membrane_report', node_ids = [35], title = 'IND Afferent Membrane Voltage', show_legend = False)
-    plot_traces(config_file = 'jsons/simulation_config.json', report_name = 'membrane_report', node_ids = [55], title = 'INM+ Afferent Membrane Voltage', show_legend = False)
-    plot_traces(config_file = 'jsons/simulation_config.json', report_name = 'membrane_report', node_ids = [65], title = 'INM- Afferent Membrane Voltage', show_legend = False)
-    plot_traces(config_file = 'jsons/simulation_config.json', report_name = 'membrane_report', node_ids = [75], title = 'PGN Membrane Voltage', show_legend = False)
-    plot_traces(config_file = 'jsons/simulation_config.json', report_name = 'membrane_report', node_ids = [85], title = 'FB Membrane Voltage', show_legend = False)
-    plot_traces(config_file = 'jsons/simulation_config.json', report_name = 'membrane_report', node_ids = [105], title = 'MPG Membrane Voltage', show_legend = False)
+    if show_fig:
+        plt.show()
+    if save_fig:
+        plt.savefig("results.png")
+
+bladder_volume = pd.read_csv('output/bladder_volume.csv')
+bladder_pressure = pd.read_csv('output/bladder_pressure.csv')
+feedback_times = pd.read_csv('output/feedback_times.csv')
+
+plot_figure(bladder_volume.to_numpy(),bladder_pressure.to_numpy(),feedback_times.to_numpy(),show_fig=False,save_fig=True)

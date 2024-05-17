@@ -1,4 +1,3 @@
-"""Simulates an example network of 450 cell receiving two kinds of exernal input as defined in the configuration file"""
 import numpy as np
 import os
 import sys
@@ -9,12 +8,17 @@ from bmtk.simulator.bionet.biocell import BioCell
 from bmtk.simulator.bionet.pointprocesscell import PointProcessCell
 from bmtk.utils.reports.spike_trains import PoissonSpikeGenerator
 from bmtk.simulator.bionet.io_tools import io
+from bladder_equations import *
+import model_parameters
+model = model_parameters.model_settings()
 
 from neuron import h
 import math
 
 
 pc = h.ParallelContext()
+MPI_RANK = int(pc.id())
+N_HOSTS = int(pc.nhost())
 
 
 class FeedbackLoop(SimulatorMod):
@@ -42,7 +46,28 @@ class FeedbackLoop(SimulatorMod):
         
         #self.voidtime
         
+    def avg_spikes(self,start,end):
+        summed_fr = 0
+        for gid, tvec in self._spike_records.items():
+            # self._spike_records is a dictionary of the recorded spikes for each cell in the previous block of
+            #  time. When self._set_spike_detector() is called it will reset/empty the spike times. If you want to
+            #  print/save the actual spike-times you can call self._all_spikes[gid] += list(tvec)
+            if gid <= end and gid >= start:
+                n_spikes = len(tvec)
+                fr = n_spikes / (self._block_length_ms/1000.0)
+                summed_fr += fr
+        avg_fr = summed_fr / 10.0
+        return avg_fr
 
+    def get_gids(self,target_pop):
+        node_set = model.node_set
+        for node in node_set:
+            if node["name"] == target_pop:
+                start = node["start"]
+                end = node["end"]
+                return(start,end)
+                break
+        
     def _set_spike_detector(self, sim):
         for gid, cell in sim.net.get_local_cells().items():
             tvec = sim._spikes[gid]
@@ -94,70 +119,22 @@ class FeedbackLoop(SimulatorMod):
         block_length = sim.nsteps_block*sim.dt/1000.0
         t = sim.h.t-block_length*1000.0
         
-        #### BLADDER EQUATIONS ####    
-    # Grill, et al. 2016
-        def blad_vol(vol):
-            f = 1.5*100*vol #- 1.5 #-10 #math.exp(48*vol-64.9) + 8
-            return f
-
-        # Grill function returning pressure in units of cm H20
-	    # Grill, et al. 2016
-        def pressure(PGN,v,IMG):
-            p = 0.6*PGN +  1.0*v - 0.1*IMG + 9
-            print("p = 0.7*{0} + 7*{1} - 0.7*{2}".format(PGN, v, IMG))
-            p = max(p,0.0)
-            return p 
-
-        # Grill function returning bladder afferent firing rate in units of Hz
-	    # Grill, et al. 2016
-        def blad_aff_fr(p):
-            fr1 = -3.0E-08*p**5 + 1.0E-5*p**4 - 1.5E-03*p**3 + 7.9E-02*p**2 - 0.6*p
-#            p_mmHg = 0.735559*p
-#            
-#            if p_mmHg < 5:
-#                fr1 = 0
-#            elif p_mmHg < 10:
-#                fr1 = 0.3*p_mmHg
-#            elif p_mmHg < 30:
-#                fr1 = 0.9*p_mmHg - 6
-#            else:
-#                fr1 = -3.0E-08*p**5 + 1.0E-5*p**4 - 1.5E-03*p**3 + 7.9E-02*p**2 - 0.6*p
-            fr1 = max(fr1,0.0)
-            return fr1 # Using scaling factor of 5 here to get the correct firing rate range
-
     ### STEP 1: Calculate PGN Firing Rate ###
         io.log_info(f'Timestep {block_interval[0]*sim.dt} to {block_interval[1]*sim.dt} ms')
-        io.log_info('PGN node_id\t  Hz')
-        summed_fr = 0
-        for gid, tvec in self._spike_records.items():
-            # self._spike_records is a dictionary of the recorded spikes for each cell in the previous block of
-            #  time. When self._set_spike_detector() is called it will reset/empty the spike times. If you want to
-            #  print/save the actual spike-times you can call self._all_spikes[gid] += list(tvec)
-            if gid < 80 and gid > 69: #PGN gids 
-                n_spikes = len(tvec)
-                fr = n_spikes / (self._block_length_ms/1000.0)
-                summed_fr += fr
-                io.log_info(f'{gid}\t\t{fr}')
-        avg_fr = summed_fr / 10.0
-        io.log_info(f'PGN firing rate avg: {summed_fr / 10.0} Hz')
+
+        gids = self.get_gids(target_pop='PGN')
+        avg_fr = self.avg_spikes(gids[0],gids[1]) #PGN gids
+
+        io.log_info(f'PGN firing rate avg: {avg_fr} Hz')
         
         # Grill 
         PGN_fr = max(2.0E-03*avg_fr**3 - 3.3E-02*avg_fr**2 + 1.8*avg_fr - 0.5, 0.0)
         io.log_info("Grill PGN fr = {0} Hz".format(PGN_fr))
 
     ### STEP 2: Calculate IMG Firing Rate ###
-        io.log_info('IMG node_gid\t  Hz')
-        summed_fr = 0
-        for gid, tvec in self._spike_records.items():
-            # self._spike_records is a dictionary of the recorded spikes for each cell in the previous block of
-            #  time. When self._set_spike_detector() is called it will reset/empty the spike times. If you want to
-            #  print/save the actual spike-times you can call self._all_spikes[gid] += list(tvec)
-            if gid < 100 and gid > 89: #IMG gids 
-                n_spikes = len(tvec)
-                fr = n_spikes / (self._block_length_ms/1000.0)
-                summed_fr += fr
-                io.log_info(f'{gid}\t\t{fr}')
-        IMG_avg_fr = summed_fr / 10.0
+        #io.log_info('IMG node_gid\t  Hz')
+        gids = self.get_gids(target_pop='IMG')
+        IMG_avg_fr = self.avg_spikes(gids[0],gids[1])
         io.log_info(f'IMG firing rate avg: {IMG_avg_fr} Hz')
         
     ### STEP 3: Volume Calculations ###
@@ -214,11 +191,7 @@ class FeedbackLoop(SimulatorMod):
         # Calculate the start and stop times for the next block
         next_block_tstart = block_interval[1]*sim.dt
         next_block_tstop = next_block_tstart+self._block_length_ms
-
-        # For this simple example we just create a randomized series of spike for the next time block for each of the
-        #  14 cells. The stimuli input rate (self._current_input_rate) is increamented by 10 Hz each block, for more
-        #  realistic simulations you can use the firing-rates calcualted above to adjust the incoming stimuli.
-        #print("Calculated Bladder Afferent Firing Rate: {0}".format(self.blad_fr))
+        
         psg = PoissonSpikeGenerator()
         psg.add(
             node_ids= [0,1,2,3,4,5,6,7,8,9],
@@ -228,27 +201,19 @@ class FeedbackLoop(SimulatorMod):
         )
         
         psg.add_spikes([0,1,2,3,4,5,6,7,8,9], [next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop], population = "Bladaff")
-        psg.to_csv("spikes.csv")
 
         for gid, cell in sim.net.get_local_cells().items():
             if gid < 10:
                 spikes = psg.get_times(gid, population='Bladaff')
                 spikes = np.sort(spikes)
-                #print("HEllo: \n {0}".format(spikes))
                 if len(spikes) == 0:
                     continue
-
-            # The next block of code is where we update the incoming/virtual spike trains for each cell, by adding
-            # each spike to the cell's netcon (eg synapse). The only caveats is the spike-trains array must
-            #  1. Have atleast one spike
-            #  2. Be sorted
-            #  3. first spike must occur after the delay.
-            # Otherwise an error will be thrown.
                 self._spike_events[gid] = np.concatenate((self._spike_events[gid], spikes))
                 nc = self._netcons[gid]
                 for t in spikes:
                     nc.event(t)
-                    
+        
+      
         if self.blad_fr > 10 and vol > 0.02:
             io.log_info("!!!PAG FIRING ACTIVATED!!!")
             self.pag_fr = 15
@@ -271,7 +236,6 @@ class FeedbackLoop(SimulatorMod):
             )
         
             psg.add_spikes([0,1,2,3,4,5,6,7,8,9], [next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop,       next_block_tstop, next_block_tstop, next_block_tstop], population = "PAGaff")
-            psg.to_csv("spikes_pag.csv")
             #self._current_input_rate += 10.0
 
             for gid, cell in sim.net.get_local_cells().items():
@@ -337,7 +301,7 @@ class FeedbackLoop(SimulatorMod):
         #io.log_info('PGN firing rate = %.2f Hz' %fr)
         io.log_info('Volume = %.4f ml' %vol)
         io.log_info('Pressure = %.2f cm H2O' %p)
-        io.log_info('Calculated bladder afferent firing rate for the next time step = {:.2f} Hz \n \n'.format(self.blad_fr))
+        io.log_info('Calculated bladder afferent firing rate for the next time step = {:.2f} Hz\n'.format(self.blad_fr))
 
         # Save values in appropriate lists
         self.times.append(t)
@@ -345,7 +309,13 @@ class FeedbackLoop(SimulatorMod):
         self.b_pres.append(p)
 
     def finalize(self, sim):
-        pass
+        pc.barrier()
+        if MPI_RANK == 0:  # Only the master process (rank 0) saves the data
+            print("Saving data from the master process")
+            np.savetxt("output/feedback_times.csv",self.times,delimiter =", ",fmt ='% s')
+            np.savetxt("output/bladder_volume.csv",self.b_vols,delimiter =", ",fmt ='% s')
+            np.savetxt("output/bladder_pressure.csv",self.b_pres,delimiter =", ",fmt ='% s')
+        pc.barrier()
 
     def save_aff(self, path):
         populations = {'Bladaff':'_high_level_neurons','PAGaff':'_pag_neurons'}

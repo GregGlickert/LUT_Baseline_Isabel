@@ -1,6 +1,6 @@
 output/
 *.zip
-biophys_components/
+x86_64/
 
 .idea/
 
