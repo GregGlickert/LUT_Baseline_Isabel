@@ -1,13 +1,16 @@
 # Build Network
 
 import numpy as np
+from numpy.random import MT19937
+from numpy.random import RandomState, SeedSequence
 from bmtk.builder.networks import NetworkBuilder
 import math
 import random
 import model_parameters
 
 random.seed(42)
-
+rs = RandomState(MT19937(SeedSequence(123456789)))
+rng = np.random.default_rng(2021)
 model = model_parameters.model_settings()
 output_dir = 'network'
 # an idea how this could be used

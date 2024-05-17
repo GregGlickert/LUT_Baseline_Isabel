@@ -12,6 +12,18 @@ from bladder_equations import *
 import model_parameters
 model = model_parameters.model_settings()
 
+import numpy as np
+from numpy.random import MT19937
+from numpy.random import RandomState, SeedSequence
+from bmtk.builder.networks import NetworkBuilder
+import math
+import random
+import model_parameters
+
+random.seed(42)
+rs = RandomState(MT19937(SeedSequence(123456789)))
+rng = np.random.default_rng(2021)
+
 from neuron import h
 import math
 

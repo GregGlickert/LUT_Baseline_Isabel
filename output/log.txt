@@ -1,290 +1,290 @@
-2024-05-17 11:56:46,971 [INFO] Created log file
-2024-05-17 11:56:47,210 [INFO] Building cells.
-2024-05-17 11:56:47,278 [INFO] Building recurrent connections
-2024-05-17 11:56:47,689 [INFO] Building virtual cell stimulations for Blad_spikes
-2024-05-17 11:56:47,735 [INFO] Building virtual cell stimulations for EUS_spikes
-2024-05-17 11:56:47,783 [INFO] Building virtual cell stimulations for PAG_spikes
-2024-05-17 11:56:47,840 [INFO] Running simulation for 30500.000 ms with the time step 0.200 ms
-2024-05-17 11:56:47,841 [INFO] Starting timestep: 0 at t_sim: 0.000 ms
-2024-05-17 11:56:47,841 [INFO] Block save every 5000 steps
-2024-05-17 11:56:49,041 [INFO]     step:5000 t_sim:1000.00 ms
-2024-05-17 11:56:49,046 [INFO] Timestep 0.0 to 1000.0 ms
-2024-05-17 11:56:49,046 [INFO] PGN firing rate avg: 2.0 Hz
-2024-05-17 11:56:49,046 [INFO] Grill PGN fr = 2.984 Hz
-2024-05-17 11:56:49,046 [INFO] IMG firing rate avg: 0.0 Hz
-2024-05-17 11:56:49,048 [INFO] Volume = 0.0000 ml
-2024-05-17 11:56:49,048 [INFO] Pressure = 10.79 cm H2O
-2024-05-17 11:56:49,049 [INFO] Calculated bladder afferent firing rate for the next time step = 0.97 Hz
+2024-05-17 12:59:25,520 [INFO] Created log file
+2024-05-17 12:59:25,698 [INFO] Building cells.
+2024-05-17 12:59:25,772 [INFO] Building recurrent connections
+2024-05-17 12:59:26,273 [INFO] Building virtual cell stimulations for Blad_spikes
+2024-05-17 12:59:26,317 [INFO] Building virtual cell stimulations for EUS_spikes
+2024-05-17 12:59:26,373 [INFO] Building virtual cell stimulations for PAG_spikes
+2024-05-17 12:59:26,432 [INFO] Running simulation for 30500.000 ms with the time step 0.200 ms
+2024-05-17 12:59:26,433 [INFO] Starting timestep: 0 at t_sim: 0.000 ms
+2024-05-17 12:59:26,433 [INFO] Block save every 5000 steps
+2024-05-17 12:59:27,887 [INFO]     step:5000 t_sim:1000.00 ms
+2024-05-17 12:59:27,892 [INFO] Timestep 0.0 to 1000.0 ms
+2024-05-17 12:59:27,892 [INFO] PGN firing rate avg: 2.0 Hz
+2024-05-17 12:59:27,892 [INFO] Grill PGN fr = 2.984 Hz
+2024-05-17 12:59:27,892 [INFO] IMG firing rate avg: 0.0 Hz
+2024-05-17 12:59:27,893 [INFO] Volume = 0.0000 ml
+2024-05-17 12:59:27,893 [INFO] Pressure = 10.79 cm H2O
+2024-05-17 12:59:27,893 [INFO] Calculated bladder afferent firing rate for the next time step = 0.97 Hz
 
-2024-05-17 11:56:50,383 [INFO]     step:10000 t_sim:2000.00 ms
-2024-05-17 11:56:50,388 [INFO] Timestep 1000.0 to 2000.0 ms
-2024-05-17 11:56:50,388 [INFO] PGN firing rate avg: 2.0 Hz
-2024-05-17 11:56:50,388 [INFO] Grill PGN fr = 2.984 Hz
-2024-05-17 11:56:50,388 [INFO] IMG firing rate avg: 0.9 Hz
-2024-05-17 11:56:50,389 [INFO] Volume = 0.0017 ml
-2024-05-17 11:56:50,389 [INFO] Pressure = 10.95 cm H2O
-2024-05-17 11:56:50,389 [INFO] Calculated bladder afferent firing rate for the next time step = 1.07 Hz
+2024-05-17 12:59:29,362 [INFO]     step:10000 t_sim:2000.00 ms
+2024-05-17 12:59:29,367 [INFO] Timestep 1000.0 to 2000.0 ms
+2024-05-17 12:59:29,367 [INFO] PGN firing rate avg: 2.0 Hz
+2024-05-17 12:59:29,368 [INFO] Grill PGN fr = 2.984 Hz
+2024-05-17 12:59:29,368 [INFO] IMG firing rate avg: 1.0 Hz
+2024-05-17 12:59:29,368 [INFO] Volume = 0.0017 ml
+2024-05-17 12:59:29,369 [INFO] Pressure = 10.94 cm H2O
+2024-05-17 12:59:29,369 [INFO] Calculated bladder afferent firing rate for the next time step = 1.07 Hz
 
-2024-05-17 11:56:52,123 [INFO]     step:15000 t_sim:3000.00 ms
-2024-05-17 11:56:52,127 [INFO] Timestep 2000.0 to 3000.0 ms
-2024-05-17 11:56:52,127 [INFO] PGN firing rate avg: 1.0 Hz
-2024-05-17 11:56:52,127 [INFO] Grill PGN fr = 1.2690000000000001 Hz
-2024-05-17 11:56:52,128 [INFO] IMG firing rate avg: 1.3 Hz
-2024-05-17 11:56:52,128 [INFO] Volume = 0.0033 ml
-2024-05-17 11:56:52,129 [INFO] Pressure = 10.13 cm H2O
-2024-05-17 11:56:52,129 [INFO] Calculated bladder afferent firing rate for the next time step = 0.57 Hz
+2024-05-17 12:59:31,034 [INFO]     step:15000 t_sim:3000.00 ms
+2024-05-17 12:59:31,040 [INFO] Timestep 2000.0 to 3000.0 ms
+2024-05-17 12:59:31,040 [INFO] PGN firing rate avg: 1.0 Hz
+2024-05-17 12:59:31,040 [INFO] Grill PGN fr = 1.2690000000000001 Hz
+2024-05-17 12:59:31,040 [INFO] IMG firing rate avg: 1.8 Hz
+2024-05-17 12:59:31,041 [INFO] Volume = 0.0033 ml
+2024-05-17 12:59:31,041 [INFO] Pressure = 10.08 cm H2O
+2024-05-17 12:59:31,041 [INFO] Calculated bladder afferent firing rate for the next time step = 0.54 Hz
 
-2024-05-17 11:56:54,174 [INFO]     step:20000 t_sim:4000.00 ms
-2024-05-17 11:56:54,179 [INFO] Timestep 3000.0 to 4000.0 ms
-2024-05-17 11:56:54,179 [INFO] PGN firing rate avg: 2.0 Hz
-2024-05-17 11:56:54,179 [INFO] Grill PGN fr = 2.984 Hz
-2024-05-17 11:56:54,179 [INFO] IMG firing rate avg: 1.1 Hz
-2024-05-17 11:56:54,180 [INFO] Volume = 0.0050 ml
-2024-05-17 11:56:54,180 [INFO] Pressure = 11.43 cm H2O
-2024-05-17 11:56:54,180 [INFO] Calculated bladder afferent firing rate for the next time step = 1.39 Hz
+2024-05-17 12:59:33,308 [INFO]     step:20000 t_sim:4000.00 ms
+2024-05-17 12:59:33,320 [INFO] Timestep 3000.0 to 4000.0 ms
+2024-05-17 12:59:33,320 [INFO] PGN firing rate avg: 1.0 Hz
+2024-05-17 12:59:33,320 [INFO] Grill PGN fr = 1.2690000000000001 Hz
+2024-05-17 12:59:33,320 [INFO] IMG firing rate avg: 1.8 Hz
+2024-05-17 12:59:33,322 [INFO] Volume = 0.0050 ml
+2024-05-17 12:59:33,322 [INFO] Pressure = 10.33 cm H2O
+2024-05-17 12:59:33,322 [INFO] Calculated bladder afferent firing rate for the next time step = 0.69 Hz
 
-2024-05-17 11:56:56,034 [INFO]     step:25000 t_sim:5000.00 ms
-2024-05-17 11:56:56,040 [INFO] Timestep 4000.0 to 5000.0 ms
-2024-05-17 11:56:56,040 [INFO] PGN firing rate avg: 4.0 Hz
-2024-05-17 11:56:56,040 [INFO] Grill PGN fr = 6.3 Hz
-2024-05-17 11:56:56,040 [INFO] IMG firing rate avg: 1.8 Hz
-2024-05-17 11:56:56,041 [INFO] Volume = 0.0067 ml
-2024-05-17 11:56:56,041 [INFO] Pressure = 13.60 cm H2O
-2024-05-17 11:56:56,041 [INFO] Calculated bladder afferent firing rate for the next time step = 3.01 Hz
+2024-05-17 12:59:35,228 [INFO]     step:25000 t_sim:5000.00 ms
+2024-05-17 12:59:35,234 [INFO] Timestep 4000.0 to 5000.0 ms
+2024-05-17 12:59:35,234 [INFO] PGN firing rate avg: 3.0 Hz
+2024-05-17 12:59:35,234 [INFO] Grill PGN fr = 4.657 Hz
+2024-05-17 12:59:35,234 [INFO] IMG firing rate avg: 0.6 Hz
+2024-05-17 12:59:35,235 [INFO] Volume = 0.0067 ml
+2024-05-17 12:59:35,236 [INFO] Pressure = 12.73 cm H2O
+2024-05-17 12:59:35,236 [INFO] Calculated bladder afferent firing rate for the next time step = 2.33 Hz
 
-2024-05-17 11:56:57,478 [INFO]     step:30000 t_sim:6000.00 ms
-2024-05-17 11:56:57,484 [INFO] Timestep 5000.0 to 6000.0 ms
-2024-05-17 11:56:57,485 [INFO] PGN firing rate avg: 4.0 Hz
-2024-05-17 11:56:57,485 [INFO] Grill PGN fr = 6.3 Hz
-2024-05-17 11:56:57,485 [INFO] IMG firing rate avg: 2.4 Hz
-2024-05-17 11:56:57,486 [INFO] Volume = 0.0083 ml
-2024-05-17 11:56:57,486 [INFO] Pressure = 13.79 cm H2O
-2024-05-17 11:56:57,486 [INFO] Calculated bladder afferent firing rate for the next time step = 3.16 Hz
+2024-05-17 12:59:37,497 [INFO]     step:30000 t_sim:6000.00 ms
+2024-05-17 12:59:37,505 [INFO] Timestep 5000.0 to 6000.0 ms
+2024-05-17 12:59:37,505 [INFO] PGN firing rate avg: 5.0 Hz
+2024-05-17 12:59:37,505 [INFO] Grill PGN fr = 7.925000000000001 Hz
+2024-05-17 12:59:37,505 [INFO] IMG firing rate avg: 3.6 Hz
+2024-05-17 12:59:37,506 [INFO] Volume = 0.0083 ml
+2024-05-17 12:59:37,506 [INFO] Pressure = 14.64 cm H2O
+2024-05-17 12:59:37,506 [INFO] Calculated bladder afferent firing rate for the next time step = 3.88 Hz
 
-2024-05-17 11:56:58,932 [INFO]     step:35000 t_sim:7000.00 ms
-2024-05-17 11:56:58,938 [INFO] Timestep 6000.0 to 7000.0 ms
-2024-05-17 11:56:58,938 [INFO] PGN firing rate avg: 7.0 Hz
-2024-05-17 11:56:58,938 [INFO] Grill PGN fr = 11.169 Hz
-2024-05-17 11:56:58,938 [INFO] IMG firing rate avg: 4.4 Hz
-2024-05-17 11:56:58,939 [INFO] Volume = 0.0100 ml
-2024-05-17 11:56:58,940 [INFO] Pressure = 16.76 cm H2O
-2024-05-17 11:56:58,940 [INFO] Calculated bladder afferent firing rate for the next time step = 5.82 Hz
+2024-05-17 12:59:39,229 [INFO]     step:35000 t_sim:7000.00 ms
+2024-05-17 12:59:39,235 [INFO] Timestep 6000.0 to 7000.0 ms
+2024-05-17 12:59:39,235 [INFO] PGN firing rate avg: 5.0 Hz
+2024-05-17 12:59:39,236 [INFO] Grill PGN fr = 7.925000000000001 Hz
+2024-05-17 12:59:39,236 [INFO] IMG firing rate avg: 3.9 Hz
+2024-05-17 12:59:39,237 [INFO] Volume = 0.0100 ml
+2024-05-17 12:59:39,237 [INFO] Pressure = 14.87 cm H2O
+2024-05-17 12:59:39,237 [INFO] Calculated bladder afferent firing rate for the next time step = 4.08 Hz
 
-2024-05-17 11:57:00,418 [INFO]     step:40000 t_sim:8000.00 ms
-2024-05-17 11:57:00,424 [INFO] Timestep 7000.0 to 8000.0 ms
-2024-05-17 11:57:00,424 [INFO] PGN firing rate avg: 2.0 Hz
-2024-05-17 11:57:00,424 [INFO] Grill PGN fr = 2.984 Hz
-2024-05-17 11:57:00,424 [INFO] IMG firing rate avg: 4.7 Hz
-2024-05-17 11:57:00,426 [INFO] Volume = 0.0117 ml
-2024-05-17 11:57:00,426 [INFO] Pressure = 12.07 cm H2O
-2024-05-17 11:57:00,426 [INFO] Calculated bladder afferent firing rate for the next time step = 1.83 Hz
+2024-05-17 12:59:41,190 [INFO]     step:40000 t_sim:8000.00 ms
+2024-05-17 12:59:41,195 [INFO] Timestep 7000.0 to 8000.0 ms
+2024-05-17 12:59:41,195 [INFO] PGN firing rate avg: 5.0 Hz
+2024-05-17 12:59:41,195 [INFO] Grill PGN fr = 7.925000000000001 Hz
+2024-05-17 12:59:41,195 [INFO] IMG firing rate avg: 5.1 Hz
+2024-05-17 12:59:41,196 [INFO] Volume = 0.0117 ml
+2024-05-17 12:59:41,196 [INFO] Pressure = 15.00 cm H2O
+2024-05-17 12:59:41,196 [INFO] Calculated bladder afferent firing rate for the next time step = 4.19 Hz
 
-2024-05-17 11:57:02,009 [INFO]     step:45000 t_sim:9000.00 ms
-2024-05-17 11:57:02,014 [INFO] Timestep 8000.0 to 9000.0 ms
-2024-05-17 11:57:02,015 [INFO] PGN firing rate avg: 3.0 Hz
-2024-05-17 11:57:02,015 [INFO] Grill PGN fr = 4.657 Hz
-2024-05-17 11:57:02,015 [INFO] IMG firing rate avg: 2.0 Hz
-2024-05-17 11:57:02,016 [INFO] Volume = 0.0133 ml
-2024-05-17 11:57:02,016 [INFO] Pressure = 13.59 cm H2O
-2024-05-17 11:57:02,016 [INFO] Calculated bladder afferent firing rate for the next time step = 3.00 Hz
+2024-05-17 12:59:42,859 [INFO]     step:45000 t_sim:9000.00 ms
+2024-05-17 12:59:42,865 [INFO] Timestep 8000.0 to 9000.0 ms
+2024-05-17 12:59:42,865 [INFO] PGN firing rate avg: 4.0 Hz
+2024-05-17 12:59:42,866 [INFO] Grill PGN fr = 6.3 Hz
+2024-05-17 12:59:42,866 [INFO] IMG firing rate avg: 4.7 Hz
+2024-05-17 12:59:42,866 [INFO] Volume = 0.0133 ml
+2024-05-17 12:59:42,867 [INFO] Pressure = 14.31 cm H2O
+2024-05-17 12:59:42,867 [INFO] Calculated bladder afferent firing rate for the next time step = 3.60 Hz
 
-2024-05-17 11:57:03,630 [INFO]     step:50000 t_sim:10000.00 ms
-2024-05-17 11:57:03,636 [INFO] Timestep 9000.0 to 10000.0 ms
-2024-05-17 11:57:03,636 [INFO] PGN firing rate avg: 3.0 Hz
-2024-05-17 11:57:03,637 [INFO] Grill PGN fr = 4.657 Hz
-2024-05-17 11:57:03,637 [INFO] IMG firing rate avg: 3.0 Hz
-2024-05-17 11:57:03,638 [INFO] Volume = 0.0150 ml
-2024-05-17 11:57:03,638 [INFO] Pressure = 13.74 cm H2O
-2024-05-17 11:57:03,638 [INFO] Calculated bladder afferent firing rate for the next time step = 3.12 Hz
+2024-05-17 12:59:44,674 [INFO]     step:50000 t_sim:10000.00 ms
+2024-05-17 12:59:44,680 [INFO] Timestep 9000.0 to 10000.0 ms
+2024-05-17 12:59:44,680 [INFO] PGN firing rate avg: 5.0 Hz
+2024-05-17 12:59:44,680 [INFO] Grill PGN fr = 7.925000000000001 Hz
+2024-05-17 12:59:44,680 [INFO] IMG firing rate avg: 3.7 Hz
+2024-05-17 12:59:44,681 [INFO] Volume = 0.0150 ml
+2024-05-17 12:59:44,681 [INFO] Pressure = 15.63 cm H2O
+2024-05-17 12:59:44,681 [INFO] Calculated bladder afferent firing rate for the next time step = 4.77 Hz
 
-2024-05-17 11:57:05,232 [INFO]     step:55000 t_sim:11000.00 ms
-2024-05-17 11:57:05,237 [INFO] Timestep 10000.0 to 11000.0 ms
-2024-05-17 11:57:05,237 [INFO] PGN firing rate avg: 2.0 Hz
-2024-05-17 11:57:05,237 [INFO] Grill PGN fr = 2.984 Hz
-2024-05-17 11:57:05,237 [INFO] IMG firing rate avg: 3.8 Hz
-2024-05-17 11:57:05,238 [INFO] Volume = 0.0167 ml
-2024-05-17 11:57:05,238 [INFO] Pressure = 12.91 cm H2O
-2024-05-17 11:57:05,238 [INFO] Calculated bladder afferent firing rate for the next time step = 2.46 Hz
+2024-05-17 12:59:46,290 [INFO]     step:55000 t_sim:11000.00 ms
+2024-05-17 12:59:46,296 [INFO] Timestep 10000.0 to 11000.0 ms
+2024-05-17 12:59:46,296 [INFO] PGN firing rate avg: 3.0 Hz
+2024-05-17 12:59:46,296 [INFO] Grill PGN fr = 4.657 Hz
+2024-05-17 12:59:46,296 [INFO] IMG firing rate avg: 5.1 Hz
+2024-05-17 12:59:46,297 [INFO] Volume = 0.0167 ml
+2024-05-17 12:59:46,297 [INFO] Pressure = 13.78 cm H2O
+2024-05-17 12:59:46,297 [INFO] Calculated bladder afferent firing rate for the next time step = 3.16 Hz
 
-2024-05-17 11:57:06,921 [INFO]     step:60000 t_sim:12000.00 ms
-2024-05-17 11:57:06,926 [INFO] Timestep 11000.0 to 12000.0 ms
-2024-05-17 11:57:06,926 [INFO] PGN firing rate avg: 1.0 Hz
-2024-05-17 11:57:06,926 [INFO] Grill PGN fr = 1.2690000000000001 Hz
-2024-05-17 11:57:06,927 [INFO] IMG firing rate avg: 1.0 Hz
-2024-05-17 11:57:06,927 [INFO] Volume = 0.0183 ml
-2024-05-17 11:57:06,928 [INFO] Pressure = 12.41 cm H2O
-2024-05-17 11:57:06,928 [INFO] Calculated bladder afferent firing rate for the next time step = 2.08 Hz
+2024-05-17 12:59:48,006 [INFO]     step:60000 t_sim:12000.00 ms
+2024-05-17 12:59:48,011 [INFO] Timestep 11000.0 to 12000.0 ms
+2024-05-17 12:59:48,011 [INFO] PGN firing rate avg: 2.0 Hz
+2024-05-17 12:59:48,011 [INFO] Grill PGN fr = 2.984 Hz
+2024-05-17 12:59:48,011 [INFO] IMG firing rate avg: 3.5 Hz
+2024-05-17 12:59:48,012 [INFO] Volume = 0.0183 ml
+2024-05-17 12:59:48,012 [INFO] Pressure = 13.19 cm H2O
+2024-05-17 12:59:48,012 [INFO] Calculated bladder afferent firing rate for the next time step = 2.68 Hz
 
-2024-05-17 11:57:08,929 [INFO]     step:65000 t_sim:13000.00 ms
-2024-05-17 11:57:08,933 [INFO] Timestep 12000.0 to 13000.0 ms
-2024-05-17 11:57:08,933 [INFO] PGN firing rate avg: 3.0 Hz
-2024-05-17 11:57:08,933 [INFO] Grill PGN fr = 4.657 Hz
-2024-05-17 11:57:08,933 [INFO] IMG firing rate avg: 2.3 Hz
-2024-05-17 11:57:08,934 [INFO] Volume = 0.0200 ml
-2024-05-17 11:57:08,934 [INFO] Pressure = 14.56 cm H2O
-2024-05-17 11:57:08,934 [INFO] Calculated bladder afferent firing rate for the next time step = 3.81 Hz
+2024-05-17 12:59:50,108 [INFO]     step:65000 t_sim:13000.00 ms
+2024-05-17 12:59:50,113 [INFO] Timestep 12000.0 to 13000.0 ms
+2024-05-17 12:59:50,113 [INFO] PGN firing rate avg: 3.0 Hz
+2024-05-17 12:59:50,113 [INFO] Grill PGN fr = 4.657 Hz
+2024-05-17 12:59:50,113 [INFO] IMG firing rate avg: 3.3 Hz
+2024-05-17 12:59:50,114 [INFO] Volume = 0.0200 ml
+2024-05-17 12:59:50,114 [INFO] Pressure = 14.46 cm H2O
+2024-05-17 12:59:50,115 [INFO] Calculated bladder afferent firing rate for the next time step = 3.73 Hz
 
-2024-05-17 11:57:11,028 [INFO]     step:70000 t_sim:14000.00 ms
-2024-05-17 11:57:11,034 [INFO] Timestep 13000.0 to 14000.0 ms
-2024-05-17 11:57:11,034 [INFO] PGN firing rate avg: 3.0 Hz
-2024-05-17 11:57:11,036 [INFO] Grill PGN fr = 4.657 Hz
-2024-05-17 11:57:11,036 [INFO] IMG firing rate avg: 3.4 Hz
-2024-05-17 11:57:11,037 [INFO] Volume = 0.0217 ml
-2024-05-17 11:57:11,037 [INFO] Pressure = 14.70 cm H2O
-2024-05-17 11:57:11,037 [INFO] Calculated bladder afferent firing rate for the next time step = 3.94 Hz
+2024-05-17 12:59:52,448 [INFO]     step:70000 t_sim:14000.00 ms
+2024-05-17 12:59:52,453 [INFO] Timestep 13000.0 to 14000.0 ms
+2024-05-17 12:59:52,454 [INFO] PGN firing rate avg: 4.0 Hz
+2024-05-17 12:59:52,454 [INFO] Grill PGN fr = 6.3 Hz
+2024-05-17 12:59:52,454 [INFO] IMG firing rate avg: 3.1 Hz
+2024-05-17 12:59:52,455 [INFO] Volume = 0.0217 ml
+2024-05-17 12:59:52,455 [INFO] Pressure = 15.72 cm H2O
+2024-05-17 12:59:52,455 [INFO] Calculated bladder afferent firing rate for the next time step = 4.85 Hz
 
-2024-05-17 11:57:12,898 [INFO]     step:75000 t_sim:15000.00 ms
-2024-05-17 11:57:12,904 [INFO] Timestep 14000.0 to 15000.0 ms
-2024-05-17 11:57:12,904 [INFO] PGN firing rate avg: 4.0 Hz
-2024-05-17 11:57:12,904 [INFO] Grill PGN fr = 6.3 Hz
-2024-05-17 11:57:12,904 [INFO] IMG firing rate avg: 5.6 Hz
-2024-05-17 11:57:12,905 [INFO] Volume = 0.0233 ml
-2024-05-17 11:57:12,905 [INFO] Pressure = 15.72 cm H2O
-2024-05-17 11:57:12,905 [INFO] Calculated bladder afferent firing rate for the next time step = 4.85 Hz
+2024-05-17 12:59:54,406 [INFO]     step:75000 t_sim:15000.00 ms
+2024-05-17 12:59:54,411 [INFO] Timestep 14000.0 to 15000.0 ms
+2024-05-17 12:59:54,411 [INFO] PGN firing rate avg: 6.0 Hz
+2024-05-17 12:59:54,411 [INFO] Grill PGN fr = 9.544 Hz
+2024-05-17 12:59:54,411 [INFO] IMG firing rate avg: 3.8 Hz
+2024-05-17 12:59:54,414 [INFO] Volume = 0.0233 ml
+2024-05-17 12:59:54,414 [INFO] Pressure = 17.85 cm H2O
+2024-05-17 12:59:54,414 [INFO] Calculated bladder afferent firing rate for the next time step = 6.89 Hz
 
-2024-05-17 11:57:14,729 [INFO]     step:80000 t_sim:16000.00 ms
-2024-05-17 11:57:14,735 [INFO] Timestep 15000.0 to 16000.0 ms
-2024-05-17 11:57:14,735 [INFO] PGN firing rate avg: 5.0 Hz
-2024-05-17 11:57:14,735 [INFO] Grill PGN fr = 7.925000000000001 Hz
-2024-05-17 11:57:14,735 [INFO] IMG firing rate avg: 4.0 Hz
-2024-05-17 11:57:14,736 [INFO] Volume = 0.0250 ml
-2024-05-17 11:57:14,736 [INFO] Pressure = 17.10 cm H2O
-2024-05-17 11:57:14,737 [INFO] Calculated bladder afferent firing rate for the next time step = 6.16 Hz
+2024-05-17 12:59:56,276 [INFO]     step:80000 t_sim:16000.00 ms
+2024-05-17 12:59:56,281 [INFO] Timestep 15000.0 to 16000.0 ms
+2024-05-17 12:59:56,281 [INFO] PGN firing rate avg: 4.0 Hz
+2024-05-17 12:59:56,281 [INFO] Grill PGN fr = 6.3 Hz
+2024-05-17 12:59:56,281 [INFO] IMG firing rate avg: 4.6 Hz
+2024-05-17 12:59:56,283 [INFO] Volume = 0.0250 ml
+2024-05-17 12:59:56,283 [INFO] Pressure = 16.07 cm H2O
+2024-05-17 12:59:56,283 [INFO] Calculated bladder afferent firing rate for the next time step = 5.17 Hz
 
-2024-05-17 11:57:16,446 [INFO]     step:85000 t_sim:17000.00 ms
-2024-05-17 11:57:16,452 [INFO] Timestep 16000.0 to 17000.0 ms
-2024-05-17 11:57:16,452 [INFO] PGN firing rate avg: 7.0 Hz
-2024-05-17 11:57:16,452 [INFO] Grill PGN fr = 11.169 Hz
-2024-05-17 11:57:16,452 [INFO] IMG firing rate avg: 6.4 Hz
-2024-05-17 11:57:16,454 [INFO] Volume = 0.0267 ml
-2024-05-17 11:57:16,454 [INFO] Pressure = 19.06 cm H2O
-2024-05-17 11:57:16,454 [INFO] Calculated bladder afferent firing rate for the next time step = 8.12 Hz
+2024-05-17 12:59:58,108 [INFO]     step:85000 t_sim:17000.00 ms
+2024-05-17 12:59:58,115 [INFO] Timestep 16000.0 to 17000.0 ms
+2024-05-17 12:59:58,115 [INFO] PGN firing rate avg: 4.0 Hz
+2024-05-17 12:59:58,115 [INFO] Grill PGN fr = 6.3 Hz
+2024-05-17 12:59:58,115 [INFO] IMG firing rate avg: 4.7 Hz
+2024-05-17 12:59:58,116 [INFO] Volume = 0.0267 ml
+2024-05-17 12:59:58,116 [INFO] Pressure = 16.31 cm H2O
+2024-05-17 12:59:58,116 [INFO] Calculated bladder afferent firing rate for the next time step = 5.39 Hz
 
-2024-05-17 11:57:18,032 [INFO]     step:90000 t_sim:18000.00 ms
-2024-05-17 11:57:18,039 [INFO] Timestep 17000.0 to 18000.0 ms
-2024-05-17 11:57:18,039 [INFO] PGN firing rate avg: 10.0 Hz
-2024-05-17 11:57:18,040 [INFO] Grill PGN fr = 16.2 Hz
-2024-05-17 11:57:18,040 [INFO] IMG firing rate avg: 6.1 Hz
-2024-05-17 11:57:18,041 [INFO] !!!PAG FIRING ACTIVATED!!!
-2024-05-17 11:57:18,043 [INFO] Volume = 0.0283 ml
-2024-05-17 11:57:18,044 [INFO] Pressure = 22.36 cm H2O
-2024-05-17 11:57:18,044 [INFO] Calculated bladder afferent firing rate for the next time step = 11.64 Hz
+2024-05-17 12:59:59,757 [INFO]     step:90000 t_sim:18000.00 ms
+2024-05-17 12:59:59,763 [INFO] Timestep 17000.0 to 18000.0 ms
+2024-05-17 12:59:59,763 [INFO] PGN firing rate avg: 6.3 Hz
+2024-05-17 12:59:59,763 [INFO] Grill PGN fr = 10.030324 Hz
+2024-05-17 12:59:59,763 [INFO] IMG firing rate avg: 5.4 Hz
+2024-05-17 12:59:59,764 [INFO] Volume = 0.0283 ml
+2024-05-17 12:59:59,764 [INFO] Pressure = 18.73 cm H2O
+2024-05-17 12:59:59,764 [INFO] Calculated bladder afferent firing rate for the next time step = 7.78 Hz
 
-2024-05-17 11:57:19,444 [INFO]     step:95000 t_sim:19000.00 ms
-2024-05-17 11:57:19,451 [INFO] Timestep 18000.0 to 19000.0 ms
-2024-05-17 11:57:19,451 [INFO] PGN firing rate avg: 20.0 Hz
-2024-05-17 11:57:19,451 [INFO] Grill PGN fr = 38.3 Hz
-2024-05-17 11:57:19,451 [INFO] IMG firing rate avg: 1.2 Hz
-2024-05-17 11:57:19,454 [INFO] Volume = 0.0083 ml
-2024-05-17 11:57:19,454 [INFO] Pressure = 33.11 cm H2O
-2024-05-17 11:57:19,454 [INFO] Calculated bladder afferent firing rate for the next time step = 23.12 Hz
+2024-05-17 13:00:01,327 [INFO]     step:95000 t_sim:19000.00 ms
+2024-05-17 13:00:01,333 [INFO] Timestep 18000.0 to 19000.0 ms
+2024-05-17 13:00:01,333 [INFO] PGN firing rate avg: 8.0 Hz
+2024-05-17 13:00:01,334 [INFO] Grill PGN fr = 12.812000000000001 Hz
+2024-05-17 13:00:01,334 [INFO] IMG firing rate avg: 5.3 Hz
+2024-05-17 13:00:01,335 [INFO] Volume = 0.0300 ml
+2024-05-17 13:00:01,335 [INFO] Pressure = 20.66 cm H2O
+2024-05-17 13:00:01,335 [INFO] Calculated bladder afferent firing rate for the next time step = 9.80 Hz
 
-2024-05-17 11:57:21,108 [INFO]     step:100000 t_sim:20000.00 ms
-2024-05-17 11:57:21,116 [INFO] Timestep 19000.0 to 20000.0 ms
-2024-05-17 11:57:21,116 [INFO] PGN firing rate avg: 17.0 Hz
-2024-05-17 11:57:21,117 [INFO] Grill PGN fr = 30.389000000000003 Hz
-2024-05-17 11:57:21,117 [INFO] IMG firing rate avg: 7.8 Hz
-2024-05-17 11:57:21,119 [INFO] Volume = 0.0000 ml
-2024-05-17 11:57:21,119 [INFO] Pressure = 26.45 cm H2O
-2024-05-17 11:57:21,119 [INFO] Calculated bladder afferent firing rate for the next time step = 16.15 Hz
+2024-05-17 13:00:02,971 [INFO]     step:100000 t_sim:20000.00 ms
+2024-05-17 13:00:02,976 [INFO] Timestep 19000.0 to 20000.0 ms
+2024-05-17 13:00:02,976 [INFO] PGN firing rate avg: 8.0 Hz
+2024-05-17 13:00:02,976 [INFO] Grill PGN fr = 12.812000000000001 Hz
+2024-05-17 13:00:02,977 [INFO] IMG firing rate avg: 5.8 Hz
+2024-05-17 13:00:02,978 [INFO] !!!PAG FIRING ACTIVATED!!!
+2024-05-17 13:00:02,980 [INFO] Volume = 0.0317 ml
+2024-05-17 13:00:02,980 [INFO] Pressure = 20.86 cm H2O
+2024-05-17 13:00:02,980 [INFO] Calculated bladder afferent firing rate for the next time step = 10.02 Hz
 
-2024-05-17 11:57:22,731 [INFO]     step:105000 t_sim:21000.00 ms
-2024-05-17 11:57:22,738 [INFO] Timestep 20000.0 to 21000.0 ms
-2024-05-17 11:57:22,738 [INFO] PGN firing rate avg: 10.0 Hz
-2024-05-17 11:57:22,738 [INFO] Grill PGN fr = 16.2 Hz
-2024-05-17 11:57:22,739 [INFO] IMG firing rate avg: 7.6 Hz
-2024-05-17 11:57:22,740 [INFO] Volume = 0.0017 ml
-2024-05-17 11:57:22,740 [INFO] Pressure = 18.21 cm H2O
-2024-05-17 11:57:22,740 [INFO] Calculated bladder afferent firing rate for the next time step = 7.25 Hz
+2024-05-17 13:00:04,557 [INFO]     step:105000 t_sim:21000.00 ms
+2024-05-17 13:00:04,564 [INFO] Timestep 20000.0 to 21000.0 ms
+2024-05-17 13:00:04,565 [INFO] PGN firing rate avg: 21.0 Hz
+2024-05-17 13:00:04,565 [INFO] Grill PGN fr = 41.269000000000005 Hz
+2024-05-17 13:00:04,565 [INFO] IMG firing rate avg: 1.8 Hz
+2024-05-17 13:00:04,567 [INFO] Volume = 0.0117 ml
+2024-05-17 13:00:04,567 [INFO] Pressure = 35.33 cm H2O
+2024-05-17 13:00:04,568 [INFO] Calculated bladder afferent firing rate for the next time step = 25.19 Hz
 
-2024-05-17 11:57:24,424 [INFO]     step:110000 t_sim:22000.00 ms
-2024-05-17 11:57:24,429 [INFO] Timestep 21000.0 to 22000.0 ms
-2024-05-17 11:57:24,429 [INFO] PGN firing rate avg: 7.0 Hz
-2024-05-17 11:57:24,429 [INFO] Grill PGN fr = 11.169 Hz
-2024-05-17 11:57:24,429 [INFO] IMG firing rate avg: 5.1 Hz
-2024-05-17 11:57:24,430 [INFO] Volume = 0.0033 ml
-2024-05-17 11:57:24,430 [INFO] Pressure = 15.69 cm H2O
-2024-05-17 11:57:24,430 [INFO] Calculated bladder afferent firing rate for the next time step = 4.82 Hz
+2024-05-17 13:00:06,259 [INFO]     step:110000 t_sim:22000.00 ms
+2024-05-17 13:00:06,266 [INFO] Timestep 21000.0 to 22000.0 ms
+2024-05-17 13:00:06,266 [INFO] PGN firing rate avg: 16.0 Hz
+2024-05-17 13:00:06,266 [INFO] Grill PGN fr = 28.044 Hz
+2024-05-17 13:00:06,266 [INFO] IMG firing rate avg: 8.3 Hz
+2024-05-17 13:00:06,268 [INFO] Volume = 0.0000 ml
+2024-05-17 13:00:06,268 [INFO] Pressure = 25.00 cm H2O
+2024-05-17 13:00:06,268 [INFO] Calculated bladder afferent firing rate for the next time step = 14.55 Hz
 
-2024-05-17 11:57:26,191 [INFO]     step:115000 t_sim:23000.00 ms
-2024-05-17 11:57:26,197 [INFO] Timestep 22000.0 to 23000.0 ms
-2024-05-17 11:57:26,197 [INFO] PGN firing rate avg: 3.0 Hz
-2024-05-17 11:57:26,197 [INFO] Grill PGN fr = 4.657 Hz
-2024-05-17 11:57:26,197 [INFO] IMG firing rate avg: 4.9 Hz
-2024-05-17 11:57:26,198 [INFO] Volume = 0.0050 ml
-2024-05-17 11:57:26,198 [INFO] Pressure = 12.05 cm H2O
-2024-05-17 11:57:26,198 [INFO] Calculated bladder afferent firing rate for the next time step = 1.82 Hz
+2024-05-17 13:00:07,956 [INFO]     step:115000 t_sim:23000.00 ms
+2024-05-17 13:00:07,963 [INFO] Timestep 22000.0 to 23000.0 ms
+2024-05-17 13:00:07,963 [INFO] PGN firing rate avg: 10.0 Hz
+2024-05-17 13:00:07,963 [INFO] Grill PGN fr = 16.2 Hz
+2024-05-17 13:00:07,963 [INFO] IMG firing rate avg: 8.3 Hz
+2024-05-17 13:00:07,964 [INFO] Volume = 0.0017 ml
+2024-05-17 13:00:07,964 [INFO] Pressure = 18.14 cm H2O
+2024-05-17 13:00:07,964 [INFO] Calculated bladder afferent firing rate for the next time step = 7.18 Hz
 
-2024-05-17 11:57:27,847 [INFO]     step:120000 t_sim:24000.00 ms
-2024-05-17 11:57:27,852 [INFO] Timestep 23000.0 to 24000.0 ms
-2024-05-17 11:57:27,852 [INFO] PGN firing rate avg: 6.0 Hz
-2024-05-17 11:57:27,852 [INFO] Grill PGN fr = 9.544 Hz
-2024-05-17 11:57:27,852 [INFO] IMG firing rate avg: 1.1 Hz
-2024-05-17 11:57:27,853 [INFO] Volume = 0.0067 ml
-2024-05-17 11:57:27,853 [INFO] Pressure = 15.62 cm H2O
-2024-05-17 11:57:27,853 [INFO] Calculated bladder afferent firing rate for the next time step = 4.75 Hz
+2024-05-17 13:00:09,582 [INFO]     step:120000 t_sim:24000.00 ms
+2024-05-17 13:00:09,587 [INFO] Timestep 23000.0 to 24000.0 ms
+2024-05-17 13:00:09,587 [INFO] PGN firing rate avg: 9.0 Hz
+2024-05-17 13:00:09,587 [INFO] Grill PGN fr = 14.485 Hz
+2024-05-17 13:00:09,587 [INFO] IMG firing rate avg: 5.0 Hz
+2024-05-17 13:00:09,588 [INFO] Volume = 0.0033 ml
+2024-05-17 13:00:09,589 [INFO] Pressure = 17.69 cm H2O
+2024-05-17 13:00:09,589 [INFO] Calculated bladder afferent firing rate for the next time step = 6.73 Hz
 
-2024-05-17 11:57:29,358 [INFO]     step:125000 t_sim:25000.00 ms
-2024-05-17 11:57:29,363 [INFO] Timestep 24000.0 to 25000.0 ms
-2024-05-17 11:57:29,363 [INFO] PGN firing rate avg: 4.0 Hz
-2024-05-17 11:57:29,363 [INFO] Grill PGN fr = 6.3 Hz
-2024-05-17 11:57:29,363 [INFO] IMG firing rate avg: 4.1 Hz
-2024-05-17 11:57:29,364 [INFO] Volume = 0.0083 ml
-2024-05-17 11:57:29,364 [INFO] Pressure = 13.62 cm H2O
-2024-05-17 11:57:29,364 [INFO] Calculated bladder afferent firing rate for the next time step = 3.02 Hz
+2024-05-17 13:00:11,643 [INFO]     step:125000 t_sim:25000.00 ms
+2024-05-17 13:00:11,658 [INFO] Timestep 24000.0 to 25000.0 ms
+2024-05-17 13:00:11,659 [INFO] PGN firing rate avg: 5.0 Hz
+2024-05-17 13:00:11,660 [INFO] Grill PGN fr = 7.925000000000001 Hz
+2024-05-17 13:00:11,661 [INFO] IMG firing rate avg: 6.1 Hz
+2024-05-17 13:00:11,662 [INFO] Volume = 0.0050 ml
+2024-05-17 13:00:11,663 [INFO] Pressure = 13.89 cm H2O
+2024-05-17 13:00:11,663 [INFO] Calculated bladder afferent firing rate for the next time step = 3.25 Hz
 
-2024-05-17 11:57:31,113 [INFO]     step:130000 t_sim:26000.00 ms
-2024-05-17 11:57:31,117 [INFO] Timestep 25000.0 to 26000.0 ms
-2024-05-17 11:57:31,117 [INFO] PGN firing rate avg: 2.0 Hz
-2024-05-17 11:57:31,117 [INFO] Grill PGN fr = 2.984 Hz
-2024-05-17 11:57:31,118 [INFO] IMG firing rate avg: 3.3 Hz
-2024-05-17 11:57:31,118 [INFO] Volume = 0.0100 ml
-2024-05-17 11:57:31,118 [INFO] Pressure = 11.96 cm H2O
-2024-05-17 11:57:31,118 [INFO] Calculated bladder afferent firing rate for the next time step = 1.76 Hz
+2024-05-17 13:00:13,610 [INFO]     step:130000 t_sim:26000.00 ms
+2024-05-17 13:00:13,614 [INFO] Timestep 25000.0 to 26000.0 ms
+2024-05-17 13:00:13,614 [INFO] PGN firing rate avg: 2.0 Hz
+2024-05-17 13:00:13,614 [INFO] Grill PGN fr = 2.984 Hz
+2024-05-17 13:00:13,614 [INFO] IMG firing rate avg: 3.8 Hz
+2024-05-17 13:00:13,616 [INFO] Volume = 0.0067 ml
+2024-05-17 13:00:13,616 [INFO] Pressure = 11.41 cm H2O
+2024-05-17 13:00:13,616 [INFO] Calculated bladder afferent firing rate for the next time step = 1.37 Hz
 
-2024-05-17 11:57:33,199 [INFO]     step:135000 t_sim:27000.00 ms
-2024-05-17 11:57:33,204 [INFO] Timestep 26000.0 to 27000.0 ms
-2024-05-17 11:57:33,205 [INFO] PGN firing rate avg: 1.0 Hz
-2024-05-17 11:57:33,205 [INFO] Grill PGN fr = 1.2690000000000001 Hz
-2024-05-17 11:57:33,205 [INFO] IMG firing rate avg: 1.4 Hz
-2024-05-17 11:57:33,206 [INFO] Volume = 0.0117 ml
-2024-05-17 11:57:33,206 [INFO] Pressure = 11.37 cm H2O
-2024-05-17 11:57:33,206 [INFO] Calculated bladder afferent firing rate for the next time step = 1.35 Hz
+2024-05-17 13:00:15,689 [INFO]     step:135000 t_sim:27000.00 ms
+2024-05-17 13:00:15,693 [INFO] Timestep 26000.0 to 27000.0 ms
+2024-05-17 13:00:15,694 [INFO] PGN firing rate avg: 2.0 Hz
+2024-05-17 13:00:15,694 [INFO] Grill PGN fr = 2.984 Hz
+2024-05-17 13:00:15,694 [INFO] IMG firing rate avg: 2.3 Hz
+2024-05-17 13:00:15,695 [INFO] Volume = 0.0083 ml
+2024-05-17 13:00:15,696 [INFO] Pressure = 11.81 cm H2O
+2024-05-17 13:00:15,696 [INFO] Calculated bladder afferent firing rate for the next time step = 1.65 Hz
 
-2024-05-17 11:57:35,413 [INFO]     step:140000 t_sim:28000.00 ms
-2024-05-17 11:57:35,419 [INFO] Timestep 27000.0 to 28000.0 ms
-2024-05-17 11:57:35,419 [INFO] PGN firing rate avg: 2.0 Hz
-2024-05-17 11:57:35,419 [INFO] Grill PGN fr = 2.984 Hz
-2024-05-17 11:57:35,419 [INFO] IMG firing rate avg: 1.3 Hz
-2024-05-17 11:57:35,420 [INFO] Volume = 0.0133 ml
-2024-05-17 11:57:35,420 [INFO] Pressure = 12.66 cm H2O
-2024-05-17 11:57:35,420 [INFO] Calculated bladder afferent firing rate for the next time step = 2.27 Hz
+2024-05-17 13:00:17,922 [INFO]     step:140000 t_sim:28000.00 ms
+2024-05-17 13:00:17,926 [INFO] Timestep 27000.0 to 28000.0 ms
+2024-05-17 13:00:17,926 [INFO] PGN firing rate avg: 2.0 Hz
+2024-05-17 13:00:17,926 [INFO] Grill PGN fr = 2.984 Hz
+2024-05-17 13:00:17,926 [INFO] IMG firing rate avg: 2.7 Hz
+2024-05-17 13:00:17,927 [INFO] Volume = 0.0100 ml
+2024-05-17 13:00:17,927 [INFO] Pressure = 12.02 cm H2O
+2024-05-17 13:00:17,927 [INFO] Calculated bladder afferent firing rate for the next time step = 1.80 Hz
 
-2024-05-17 11:57:36,971 [INFO]     step:145000 t_sim:29000.00 ms
-2024-05-17 11:57:36,976 [INFO] Timestep 28000.0 to 29000.0 ms
-2024-05-17 11:57:36,976 [INFO] PGN firing rate avg: 4.3 Hz
-2024-05-17 11:57:36,976 [INFO] Grill PGN fr = 6.788844 Hz
-2024-05-17 11:57:36,976 [INFO] IMG firing rate avg: 2.1 Hz
-2024-05-17 11:57:36,977 [INFO] Volume = 0.0150 ml
-2024-05-17 11:57:36,977 [INFO] Pressure = 15.11 cm H2O
-2024-05-17 11:57:36,977 [INFO] Calculated bladder afferent firing rate for the next time step = 4.30 Hz
+2024-05-17 13:00:19,517 [INFO]     step:145000 t_sim:29000.00 ms
+2024-05-17 13:00:19,522 [INFO] Timestep 28000.0 to 29000.0 ms
+2024-05-17 13:00:19,522 [INFO] PGN firing rate avg: 4.3 Hz
+2024-05-17 13:00:19,522 [INFO] Grill PGN fr = 6.788844 Hz
+2024-05-17 13:00:19,522 [INFO] IMG firing rate avg: 3.5 Hz
+2024-05-17 13:00:19,523 [INFO] Volume = 0.0117 ml
+2024-05-17 13:00:19,523 [INFO] Pressure = 14.47 cm H2O
+2024-05-17 13:00:19,523 [INFO] Calculated bladder afferent firing rate for the next time step = 3.74 Hz
 
-2024-05-17 11:57:38,490 [INFO]     step:150000 t_sim:30000.00 ms
-2024-05-17 11:57:38,496 [INFO] Timestep 29000.0 to 30000.0 ms
-2024-05-17 11:57:38,496 [INFO] PGN firing rate avg: 6.0 Hz
-2024-05-17 11:57:38,496 [INFO] Grill PGN fr = 9.544 Hz
-2024-05-17 11:57:38,496 [INFO] IMG firing rate avg: 3.0 Hz
-2024-05-17 11:57:38,497 [INFO] Volume = 0.0167 ml
-2024-05-17 11:57:38,497 [INFO] Pressure = 16.93 cm H2O
-2024-05-17 11:57:38,497 [INFO] Calculated bladder afferent firing rate for the next time step = 5.98 Hz
+2024-05-17 13:00:21,111 [INFO]     step:150000 t_sim:30000.00 ms
+2024-05-17 13:00:21,116 [INFO] Timestep 29000.0 to 30000.0 ms
+2024-05-17 13:00:21,117 [INFO] PGN firing rate avg: 7.0 Hz
+2024-05-17 13:00:21,117 [INFO] Grill PGN fr = 11.169 Hz
+2024-05-17 13:00:21,117 [INFO] IMG firing rate avg: 4.6 Hz
+2024-05-17 13:00:21,118 [INFO] Volume = 0.0133 ml
+2024-05-17 13:00:21,118 [INFO] Pressure = 17.24 cm H2O
+2024-05-17 13:00:21,118 [INFO] Calculated bladder afferent firing rate for the next time step = 6.29 Hz
 
-2024-05-17 11:57:39,264 [INFO]     step:152500 t_sim:30500.00 ms
-2024-05-17 11:57:39,269 [INFO] Timestep 30000.0 to 30500.0 ms
-2024-05-17 11:57:39,269 [INFO] PGN firing rate avg: 4.3 Hz
-2024-05-17 11:57:39,269 [INFO] Grill PGN fr = 6.788844 Hz
-2024-05-17 11:57:39,269 [INFO] IMG firing rate avg: 1.9 Hz
-2024-05-17 11:57:39,270 [INFO] Volume = 0.0183 ml
-2024-05-17 11:57:39,271 [INFO] Pressure = 15.63 cm H2O
-2024-05-17 11:57:39,271 [INFO] Calculated bladder afferent firing rate for the next time step = 4.77 Hz
+2024-05-17 13:00:21,880 [INFO]     step:152500 t_sim:30500.00 ms
+2024-05-17 13:00:21,885 [INFO] Timestep 30000.0 to 30500.0 ms
+2024-05-17 13:00:21,885 [INFO] PGN firing rate avg: 3.3 Hz
+2024-05-17 13:00:21,885 [INFO] Grill PGN fr = 5.1525039999999995 Hz
+2024-05-17 13:00:21,885 [INFO] IMG firing rate avg: 2.4 Hz
+2024-05-17 13:00:21,886 [INFO] Volume = 0.0150 ml
+2024-05-17 13:00:21,887 [INFO] Pressure = 14.10 cm H2O
+2024-05-17 13:00:21,887 [INFO] Calculated bladder afferent firing rate for the next time step = 3.42 Hz
 
-2024-05-17 11:57:39,364 [INFO] Simulation completed in 51.52 seconds 
+2024-05-17 13:00:21,973 [INFO] Simulation completed in 55.54 seconds 
