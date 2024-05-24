@@ -11,9 +11,8 @@ import math
 import random
 import model_parameters
 
-random.seed(42)
-rs = RandomState(MT19937(SeedSequence(123456789)))
-rng = np.random.default_rng(2021)
+random.seed(1234)
+np.random.seed(1234)
 
 def write_file(spikes_path, stims, pop_name):
   """Write spikes to a csv file

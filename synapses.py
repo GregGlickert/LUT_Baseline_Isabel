@@ -5,6 +5,10 @@ import os
 from bmtk.simulator.bionet.pyfunction_cache import add_synapse_model
 from neuron import h
 import random
+import numpy as np
+
+random.seed(1234)
+np.random.seed(1234)
 
 def Exp2Syn1_STSP(syn_params, sec_x, sec_id):
     """Create a Exp2Syn1_STSP synapse
