@@ -1,8 +1,17 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 
-def plot_figure(bladder_volume,bladder_pressure,feedback_times,save_fig=None,show_fig=None):
-    #Plot bladder volume and bladder pressure
+
+def volume_pressure_plot(bladder_volume,bladder_pressure,feedback_times,save_fig=None,show_fig=None):
+    """Plot bladder volume and bladder pressure
+    bladder_volume: np array
+    bladder_pressure: np array
+    feedback_times: np array
+    save_fig: string
+    show_fig: Bool
+    
+    """
     fig1, ax1_1 = plt.subplots(figsize = (10,6))
 
     feedback_times = [tx/1000 for tx in feedback_times]
@@ -27,10 +36,5 @@ def plot_figure(bladder_volume,bladder_pressure,feedback_times,save_fig=None,sho
     if show_fig:
         plt.show()
     if save_fig:
-        plt.savefig("results.png")
+        plt.savefig(save_fig)
 
-bladder_volume = pd.read_csv('output/bladder_volume.csv')
-bladder_pressure = pd.read_csv('output/bladder_pressure.csv')
-feedback_times = pd.read_csv('output/feedback_times.csv')
-
-plot_figure(bladder_volume.to_numpy(),bladder_pressure.to_numpy(),feedback_times.to_numpy(),show_fig=False,save_fig=True)

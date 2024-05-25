@@ -1,6 +1,7 @@
 output/
 *.zip
 x86_64/
+network/
 
 .idea/
 
