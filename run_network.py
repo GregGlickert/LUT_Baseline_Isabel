@@ -50,7 +50,7 @@ if __name__ == '__main__':
         run(sys.argv[1])
     else:
         if model.case == 'baseline':
-            config = 'jsons/simulation_config.json'
+            config = 'simulation_config.json'
         # could add different cases and manage them like this
         #if model.case == 'sci':
         #    config = 'sci_simulation_config.json'
