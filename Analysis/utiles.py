@@ -38,3 +38,52 @@ def volume_pressure_plot(bladder_volume,bladder_pressure,feedback_times,save_fig
     if save_fig:
         plt.savefig(save_fig)
 
+def plot_spiking_rate(df, node_set, included_groups, time_window_ms=100):
+    # Filter the DataFrame to include only the specified groups
+    df_filtered = df[df['group'].isin(included_groups)].copy()
+    
+    # Create time bins
+    time_bins = np.arange(0, df_filtered['timestamps'].max() + time_window_ms, time_window_ms)
+
+    # Bin the timestamps
+    df_filtered.loc[:, 'time_bin'] = pd.cut(df_filtered['timestamps'], bins=time_bins, labels=time_bins[:-1])
+    
+    # Group by time bin and group, then count spikes
+    spike_counts = df_filtered.groupby(['time_bin', 'group']).size().unstack(fill_value=0)
+    
+    # Convert to firing rate (spikes per second)
+    time_window_sec = time_window_ms / 1000
+    firing_rate = spike_counts / time_window_sec
+
+    
+    # Plot the firing rate for each group
+    plt.figure(figsize=(15, 8))
+    for group in firing_rate.columns:
+        color = next(item['color'] for item in node_set if item['name'] == group)
+        # Calculate group sizes
+        group_sizes = {group['name']: group['end'] - group['start'] + 1 for group in node_set}
+        plt.plot(firing_rate.index.astype(float), firing_rate[group]/group_sizes[group], marker='o', linestyle='-', color=color, label=group)
+    
+    plt.xlabel('Time (s)')
+    plt.ylabel('Firing Rate (spikes/s)')
+    plt.title('Neuron Spiking Rate Over Time by Group')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+def raster(spikes_df, node_set, start=0,end=80000):
+    spikes_df = spikes_df[spikes_df['timestamps'] > start]
+    spikes_df = spikes_df[spikes_df['timestamps'] < end]
+    for node in node_set:
+        cells = range(node['start'], node['end'] + 1)  # +1 to be inclusive of last cell
+        cell_spikes = spikes_df[spikes_df['node_ids'].isin(cells)]
+
+        plt.scatter(cell_spikes['timestamps'], cell_spikes['node_ids'],
+                   c=node['color'], s=2, label=node['name'])
+
+    plt.gca().legend(loc='lower right')
+    plt.grid(False)
+
+
+
+
