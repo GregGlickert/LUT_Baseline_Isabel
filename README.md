@@ -7,31 +7,34 @@
 * ### synapses.py is not being used?
 * ### feedback.py is currently using block format still and is unable to be ran parallel
 
+## Activate environment 
+```
+source /opt/py39-nrn/bin/activate
+```
 ## Build network
 ```
 python build_network.py
 ```
 ## Compile mod files
 ```
-cd biophys_components/mechaisms
-nrnivmodl modfiles
+cd biophys_components/mechanisms/
+rm -rf x86_64/
+nrnivmodl modfiles/
 cd ../..
 ```
 ## Run network
 ```
 python run_network.py
 ```
-## Check results
-```
-python plot_results.py
-```
+## To check results open the notebook in the analysis folder Kernel path is /opt/py39-nrn/bin/python
+
 
 ## The file structure of the whole model will be 
 | python file |use      |
 |----------- | ----------- |
 | build_network.py     |build network files            |
 | run_network.py       |run network            | 
-| plot_results.py      |plot simulation results            |
+| Analysis folder      |plot simulation results            |
 | model_parameters.py  |adjust network parameters                |
 | feedback_loop.py     |BMTK module for feedback                  |
 | bladder_equations.py |biophysical bladder eqautions stored here                 |
